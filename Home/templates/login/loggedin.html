@@ -1,0 +1,35 @@
+
+<html>
+    <head>
+        {% load static %}
+        <title>Freelancer-Loggedin</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body bgcolor="#E6E6FA">
+        <h2><font color="green"> Welcome {{full_name}} you are logged in!</font> </h2>
+
+        <br>
+        <p> Click <a href="/freelancer/logout/">HERE</a> to logout </p>
+        <br>
+        <p>Want to Update Your Profile Then Click <a href="/freelancer/updateprofile/" >Here</a></p>
+
+        <p>Want to go to Home page then click<a href="/">here</a> </p>
+        <a href="/freelancer/sendEmail/">send Mail</a>
+        <a href="/freelancer/uploadProject/">upload project</a>
+        <ul class="list-group">
+					{%for f in freTeam%}
+
+					<li class="list-group-item">
+							Name:={{f.memberName}}<br>
+							Experience:={{f.experience}}<br>
+							Mobile Number:={{f.mobileNo}}<br>
+							<a href="/freelancer/updateTeam/{{f.id}}/">Update Team</a>
+					</li>
+
+					{%endfor%}
+        </ul>
+
+    </body>
+</html>

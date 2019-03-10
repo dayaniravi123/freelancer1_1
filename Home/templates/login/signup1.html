@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+    {%load static%}
+<title>Sign Up</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Validation Signup Form Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- fonts -->
+<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+
+	<!-- css -->
+
+<link rel="stylesheet" href="{% static 'css/flexslider.css'%}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
+<link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+<link href="{%static 'signup/css/bootstrap.css'%}" rel="stylesheet" type='text/css' media="all" />
+<link href="{%static 'signup/css/style.css'%}" rel="stylesheet" type='text/css' media="all" />
+
+	<!-- /css -->
+</head>
+<body>
+<header>
+	<div class="container">
+<!-- nav -->
+		<nav class="navbar navbar-expand-lg navbar-light py-4">
+			<!-- logo -->
+			<h1>
+				<a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
+					Web <span>Booster</span>
+				</a>
+			</h1>
+			<!-- //logo -->
+			<button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- main nav -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-lg-auto text-center">
+					<li class="nav-item active mr-lg-2">
+						<a class="nav-link" href="Home/home.html">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item mr-lg-2">
+						<a class="nav-link scroll" href="#welcome">Login</a>
+					</li>
+					<li class="nav-item mr-lg-2">
+						<a class="nav-link scroll" href="#services">Sign up</a>
+					</li>
+					<li class="nav-item mr-2">
+						<a class="nav-link scroll" href="#pricing">Post Project</a>
+					</li>
+					<li class="nav-item mr-2">
+						<a class="nav-link scroll" href="#pricing">Browse job</a>
+					</li>
+					<li class="last">
+						<a class="contact scroll" href="#contact">Contact Us</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //main nav -->
+		</nav>
+		<!-- //nav -->
+	</div>
+	</header>
+
+<h1 class="w3ls" style="padding-top:80px;">Signup Form</h1>
+	<div class="content-agileits">
+		<form action="/freelancer/addUser/" method="post" data-toggle="validator" role="form">
+			{%csrf_token%}
+            <div class="form-group w3layouts w3 w3l">
+				<label for="username" class="control-label"> User Name</label>
+				<input type="text" name="uname" class="form-control" id="username" placeholder="User Name" data-error="Enter Your Name" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group w3l agileinfo wthree w3-agileits">
+				<label for="inputEmail" class="control-label">Email</label>
+				<input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="This email address is invalid" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group agileinfo wthree w3-agileits agile">
+				<label for="Phone" class="control-label">Phone</label>
+				<input type="text" class="form-control" name="mobile" id="Phone" placeholder="Phone" data-error="Enter Your Phone Number" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group agile agileits-w3layouts w3-agile">
+				<label for="inputPassword" class="control-label">Password</label>
+				<div class="form-inline row">
+					<div class="form-group col-sm-6 agileits-w3layouts">
+						<input type="password" name="pass1" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
+						<div class="help-block">Minimum of 6 characters</div>
+					</div>
+					<div class="form-group col-sm-6 w3-agile">
+						<input type="password" name="pass2" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm Password" required>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-lg">Submit</button>
+			</div>
+		</form>
+    </div>
+<!-- js files -->
+<script src="{%static 'signup/js/jquery-1.10.2.min.js'%}"></script>
+<script src="{%static 'signup/js/bootstrap.min.js'%}"></script>
+<script src="{%static 'signup/js/validator.min.js'%}"></script>
+<!-- /js files -->
+</body>
+</html>

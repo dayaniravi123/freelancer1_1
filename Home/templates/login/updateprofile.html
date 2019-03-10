@@ -1,0 +1,149 @@
+<html>
+    <head>
+        {% load static %}
+        <title>Freelancer-SignUp</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'updateprofile.css' %}" />
+        <meta name="keywords" content="Web Booster Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+              Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+        <script type="application/x-javascript">
+            addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+            }, false);
+
+            function hideURLbar() {
+            window.scrollTo(0, 1);
+            }
+        </script>
+        <!-- css files -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
+        <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+        <link rel="stylesheet" href="{% static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
+        <!-- //css files -->
+
+        <link rel="stylesheet" href="{% static 'css/flexslider.css'%}" type="text/css" media="screen" />
+
+        <!--web font-->
+        <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+        <!--//web font-->
+
+    </head>
+
+    <body bgcolor="#b2c1c4">
+        <script>
+            function checkPass()
+            {
+                //Store the password field objects into variables ...
+                var pass1 = document.getElementById('pass1');
+                var pass2 = document.getElementById('pass2');
+                //Store the Confimation Message Object ...
+                var message = document.getElementById('confirmMessage');
+                //Set the colors we will be using ...
+                var goodColor = "#66cc66";
+                var badColor = "#ff6666";
+                //Compare the values in the password field
+                //and the confirmation field
+                if (pass1.value == pass2.value) {
+                    //The passwords match.
+                    //Set the color to the good color and inform
+                    //the user that they have entered the correct password
+                    pass2.style.backgroundColor = goodColor;
+                    message.style.color = goodColor;
+                    message.innerHTML = "Passwords Match!"
+                } else {
+                    //The passwords do not match.
+                    //Set the color to the bad color and
+                    //notify the user.
+                    pass2.style.backgroundColor = badColor;
+                    message.style.color = badColor;
+                    message.innerHTML = "Passwords Do Not Match!"
+                }
+            }
+        </script>
+        <header>
+            <div class="container">
+                <!-- nav -->
+                <nav class="navbar navbar-expand-lg navbar-light py-4 bg-dark">
+                    <!-- logo -->
+                    <h1>
+                        <a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
+                            Web <span>Booster</span>
+                        </a>
+                    </h1>
+                    <!-- //logo -->
+                    <button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- main nav -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-lg-auto text-center">
+                            <li class="nav-item active mr-lg-2">
+                                <a class="nav-link" href="Home/home.html">Home
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item mr-lg-2">
+                                <a class="nav-link scroll" href="#welcome">Login</a>
+                            </li>
+                            <li class="nav-item mr-lg-2">
+                                <a class="nav-link scroll" href="#services">Sign up</a>
+                            </li>
+                            <li class="nav-item mr-2">
+                                <a class="nav-link scroll" href="#pricing">Post Project</a>
+                            </li>
+                            <li class="nav-item mr-2">
+                                <a class="nav-link scroll" href="#pricing">Browse job</a>
+                            </li>
+                            <li class="last">
+                                <a class="contact scroll" href="#contact">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //main nav -->
+                </nav>
+                <!-- //nav -->
+            </div>
+        </header>
+		<div class="loginbox">
+
+        	<form action="/freelancer/profileUpdation/" style="padding-top:50px;" method="post" enctype="multipart/form-data" >
+				{%csrf_token%}
+				<div class="row">
+				<div class="col-sm-6">
+				<p><label for="username">user name : </label></p>
+    	        <input type="text" name="uname" placeholder="user name" id="username">
+        	    <p><label for="emailId">Email Id : </label></p>
+    	        <input type="email" id="emailId" name="email" placeholder="Email Id">
+				<p><label for="Password">Password : </label></p>
+				<input type="password" id="Password" name="pass1" placeholder="Password">
+				<p><label for="mobileNo">Mobile No : </label></p>
+				<input type="number" name="mobile" id="mobileNo" placeholder="mobile">
+				<p><label for="address">Address : </label></p>
+				<textarea name="description" id="address" placeholder="Descriptions"></textarea>
+				<p><label for="skill">Skills : </label></p>
+				<input type="text" id="skill" name="skills" placeholder="Skills">
+				</div>
+				<div class="col-sm-6">
+				<p><label for="qualification">Qualification : </label></p>
+				<input type="text" id="qualification" name="qualification" placeholder="qualification">
+				<p><label for="experience">Experience : </label></p>
+				<input type="text" id="experience" name="exper" placeholder="Experience">
+				<p><label for="education">Education : </label></p>
+				<input type="text" id="education" name="education" placeholder="Education">
+				<p><label for="certificate">Certificate : </label></p>
+				<input type="file" id="certificate" name="file" placeholder="certificate">
+				<p><label for="photo">Profile Photo : </label></p>
+				<input type="file" id="photo" name="photo" placeholder="profile photo">
+                <p><label for="paytm">Paytm Link: </label></p>
+				<input type="text" id="paytm" name="paytm" placeholder="Paytm Link">
+				</div>
+				</div>
+				<input type="submit" value="update"/><br>
+
+        	</form>
+    	</div>
+
+    </body>
+</html>

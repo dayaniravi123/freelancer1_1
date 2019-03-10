@@ -1,0 +1,11 @@
+<html>
+    <body>
+    <h2>Hello your projectis send to employer</h2>
+    <form  action="/freelancer/projectUpdation/" method="post" enctype="multipart/form-data">
+             {% csrf_token %}
+            <input type="text" name="pName" placeholder="Enter the project name"><br>
+            <input type="file" name="file" placeholder="upload Project">
+            <input type="submit" value="upload">
+        </form>
+    </body>
+</html>

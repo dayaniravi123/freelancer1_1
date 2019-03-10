@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Freelancer</title>
+</head>
+<body>
+    <a href="/freelancer/login">I want Work</a>
+    <a href="/employer/login">I want Hire</a>
+    <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Projectname</th>
+            <th scope="col">projectDescription</th>
+            <th scope="col">price</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {%for proj in c %}
+        
+        <tr>
+            <td>{{proj.id}}</td>
+            <td>{{proj.projectName}}</td>
+            <td>{{proj.description}}</td>
+            <td>{{proj.price}}</td>
+            <td><a href="/freelancer/placeBid/{{proj.id}}">place bid</a> </td>
+        </tr>
+
+        {%endfor%}
+  </tbody>
+</table>
+    {% for bid in b %}
+    <p><span style="margin:15px;">{{bid.id}}</span>
+        <span style="margin:15px;">{{bid.proposal}}</span>
+        <span style="margin:15px;">{{bid.price}}</span>
+        <span style="margin:15px;">{{bid.days}}</span></p>
+    {%endfor%}
+</body>
+</html>

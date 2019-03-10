@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Freelancer-SignUp</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'projectSubmit.css' %}" />
+
+
+</head>
+<body>
+    <header>
+		<div class="header-inner">
+			<a href="/home/" id="logo"></a>
+			<nav>
+				<a href="#" id="menu-icon"></a>
+				<ul>
+					<li><a href="/home/" >Home</a></li>
+					<li><a href="/login/login/">Login</a></li>
+					<li><a href="#">Project</a></li>
+					<li><a href="#" >About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+    <div class="signupbox">
+		<section class="left">
+			<h1>Project Submission</h1><br><br>
+			<form action="/employer/projectSubmission/" method="post" enctype="multipart/form-data" >
+				{% csrf_token %}
+				<input type="text" name="pname" placeholder="Projectname"><br>
+				<textarea name="description" placeholder="Descriptions"></textarea><br>
+                <input type="file" name="file" placeholder="upload files"><br>
+				<input type="text" name="skills" placeholder="Skills"><br>
+				<input type="text" name="typeOfProject" placeholder="Type Of Project"><br>
+                <input type="number" name="price" placeholder="Price"><br>
+                <input type="text" name="payType" placeholder="Type Of Pay"><br>
+
+                <input type="submit" value="Submit Project">
+			</form>
+		</section>
+    </div>
+
+
+
+
+
+</body>
+</html>

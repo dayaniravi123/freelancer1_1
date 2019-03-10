@@ -1,0 +1,153 @@
+/*@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+*/
+
+*{
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+body{
+	font-family: 'Playfair Display', serif;
+	background-color: #b2c1c4;
+	color: #343b3d;
+	margin:0;
+
+}/*
+header{
+	background-color:#4374a5;
+	width: 100%;
+	height: 80px;
+}
+#header-inner{
+	max-width: 1200px;
+	height: auto;
+	margin: 0 auto;
+}
+#logo{
+	margin: 20px;
+	float: left;
+	width: 200px;
+	height: 60px;
+	background: url('images/exam_hub_medium.png') no-repeat center;
+}
+*/
+
+/*Navigation starts here----------*/
+/*nav{
+	float: right;
+	padding: 20px 25px 0 0;
+}
+ul{
+	list-style-type: none;
+}
+nav ul li{
+	font-family: 'Playfair Display', serif;
+	font-size: 150%;
+	display: inline-block;
+	float: left;
+	padding: 10px;
+}
+nav ul li a{
+	text-decoration: none;
+	color: #343b3d;
+}
+nav ul li a:hover{
+	color: #b2c1c4;
+}
+.current{
+	color: #b2c1c4;
+}*/
+
+h1{
+	text-align: center;
+	font-size: 250%;
+}
+.loginbox{
+	width: 80%;
+	height: 80%;
+	/*background: #28313f;*/
+	color: #000;
+	top: 50%;
+	left:50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	border-radius: 15px;
+	box-sizing: border-box;
+	padding: 200px 20px 30px 20px;
+}
+.loginbox img{
+	font-size: 200%;
+	padding: 4% 0 0 40%;
+	margin-top:1px ;
+	text-align: center;
+}
+
+.signupbox{
+	width: 700px;
+	padding: 20px;
+	background-color: transparent;
+	color: #fff;
+	position: absolute;
+	top: 30%;
+	left: 55%;
+	height: 60%;
+
+	transform: translate(-50%,-50%);
+	border-radius:15px ;
+}
+.signupbox input{
+	margin-bottom: 20px;
+}
+.left{
+	float: left;
+}
+.or{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.right{
+	float: right;
+}
+.right h3 a{
+	top: 50%;
+	left: 75%;
+	position: absolute;
+	text-decoration: none;
+	color: #fff;
+	transform: translate(-50%,-50%);
+	background-color: red;
+	border-radius: 4px;
+}
+.right h3 a:hover{
+	color: yellow;
+}
+input
+{
+    border-style:solid;
+}
+.loginbox input[type="text"],input[type="email"],input[type="password"],input[type="number"],input[type="file"],textarea{
+	border: none;
+	border-bottom: 1px solid #000;
+	background: transparent;
+	color: #000;
+    margin-bottom: 10px;
+	line-height: 40px;
+	font-size: 16px;
+	width: 300px;
+}
+.loginbox input[type="submit"]{
+	border: none;
+	background: #4a5c7a;
+	color: #fff;
+	outline: none;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 15px;
+	width: 50%;
+}
+.signupbox input[type="submit"]:hover{
+	cursor: pointer;
+	background: blue;
+}

@@ -1,0 +1,28 @@
+
+<html>
+    <body bgcolor="#E6E6FA">
+        <h2><font color="green"> Welcome {{full_name}} you are logged in!</font> </h2>
+
+        <br>
+        <p> Click <a href="/employer/logout/">HERE</a> to logout </p>
+        <br>
+        <p>Want to add project then click<a href="/employer/projectSubmit/">Here</a> </p><br><br>
+        <p>Want to Update Your Profile Then Click <a href="#" >Here</a></p>
+        <p>List of project</p>
+        {% for p in projectList %}
+            {% if p.id is None%}
+                <h3>No Projects</h3>
+            {%else%}
+                <a href="/project/showBid/{{p.id}}"><h4>{{p.projectName}}</h4></a>
+                <p>{{p.status}}</p>
+                {%if p.status == "complete"%}
+                    <a href="/employer/satisfy/">Satisfy</a>
+                    <a href="/employer/downloadProject/{{p.projectName}}/">download project</a>
+                {%endif%}
+            {%endif%}
+        {%endfor%}
+        <p>Want to go to Home page then click<a href="/">here</a> </p>
+
+
+    </body>
+</html>

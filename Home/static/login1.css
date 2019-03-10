@@ -1,0 +1,143 @@
+
+/*@import url('https://fonts.googleapis.com/css?family=Playfair+Display');*/
+
+*{
+	margin: 0;
+	border:0;
+	padding:0;
+}
+/*body{
+	margin: 0;
+	font-family: 'Playfair Display', serif;
+	background-color: #b2c1c4;
+	color: #343b3d;
+}
+/*header{
+	background-color:#4374a5;
+	width: 100%;
+	height: 80px;
+}
+#header-inner{
+	max-width: 1200px;
+	height: auto;
+	margin: 0 auto;
+}*/
+#logo{
+	margin: 20px;
+	float: left;
+	width: 200px;
+	height: 60px;
+	background: url('images/exam_hub_medium.png') no-repeat center;
+}
+
+
+/*Navigation starts here----------*/
+/*
+nav{
+	float: right;
+	padding: 20px 25px 0 0;
+}
+ul{
+	list-style-type: none;
+}
+nav ul li{
+	font-family: 'Playfair Display', serif;
+	font-size: 150%;
+	display: inline-block;
+	float: left;
+	padding: 10px;
+}
+nav ul li a{
+	text-decoration: none;
+	color: #343b3d;
+}
+nav ul li a:hover{
+	color: #b2c1c4;
+}
+.current{
+	color: #b2c1c4;
+}
+*/
+.loginbox{
+	width: 320px;
+	height: 350px;
+	background: #28313f;
+	color: #fff;
+	top: 30%;
+	left:50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	border-radius: 15px;
+	box-sizing: border-box;
+	padding: 0px 20px 30px 20px;
+}
+.loginbox img{
+	font-size: 200%;
+	padding: 4% 0 0 40%;
+	margin-top:1px ;
+	text-align: center;
+}
+h2{
+	text-align: center;
+	color: red;
+}
+h3{
+	text-align: center;
+	font-size: 175%;
+}
+p{
+	padding: 2%;
+	font-size: 14px;
+	font-weight: bold;
+}
+.loginbox input{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.loginbox input[type="text"],input[type="password"]{
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+.loginbox input[type="submit"]{
+	border: none;
+	outline: none;
+	height: 40px;
+	font-size: 18px;
+	background: red;
+	color:#fff;
+	border-radius: 20px;
+}
+.loginbox input[type="submit"]:hover{
+	cursor: pointer;
+	background-color: blue;
+	color: #fff;
+}
+.loginbox a{
+	text-decoration: none;
+	color: grey;
+	font-size: 14px;
+	line-height: 20px;
+}
+.loginbox a:hover{
+	color:#c6c23f;
+}
+footer.second{
+	/*border-top: 2px solid green;*/
+	position: absolute;
+	top:100%;
+	left: 50%;
+	transform: translate(-50%,50%);
+	width: 100%;
+	background-color:#4374a5;
+	max-height: 60px;
+	margin: 0;
+	color: #fff;
+}
+footer.second p{
+	padding: 5px 0 6px 0;
+	text-align: center;
+}
