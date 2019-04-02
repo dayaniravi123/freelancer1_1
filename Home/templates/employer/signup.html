@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
+
+
+
+
+<!---new code -->
+<!--new code-->
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	{% load static %}
-    <title>Freelancer-SignUp</title>
-	<meta charset="utf-8">
+<title>Freelancer</title>
+	{%load static%}
+	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'signup.css' %}" />
+	<meta charset="utf-8">
 	<meta name="keywords" content="Web Booster Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script type="application/x-javascript">
@@ -17,53 +25,35 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<!--// Meta tag Keywords -->
+
+
+	<link href="{%static 'signup/css/bootstrap.css'%}" rel="stylesheet" type='text/css' media="all" />
+	<link href="{%static 'signup/css/style.css'%}" rel="stylesheet" type='text/css' media="all" />
+	<script src="{%static 'signup/js/jquery-1.10.2.min.js'%}"></script>
+	<script src="{%static 'signup/js/bootstrap.min.js'%}"></script>
+	<script src="{%static 'signup/js/validator.min.js'%}"></script>
+
+
 	<!-- css files -->
-	<link rel="stylesheet" href="{% static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
-	<link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
-	<link rel="stylesheet" href="{% static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
+	<link rel="stylesheet" href="{%static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="{%static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+	<link rel="stylesheet" href="{%static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
 	<!-- //css files -->
 
-	<link rel="stylesheet" href="{% static 'css/flexslider.css'%}" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{%static 'css/flexslider.css'%}" type="text/css" media="screen" />
 
 	<!--web font-->
 	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
 	<!--//web font-->
 
-
 </head>
+
 <body>
-<script>
-	function checkPass()
-	{
-    //Store the password field objects into variables ...
-    var pass1 = document.getElementById('pass1');
-    var pass2 = document.getElementById('pass2');
-    //Store the Confimation Message Object ...
-    var message = document.getElementById('confirmMessage');
-    //Set the colors we will be using ...
-    var goodColor = "#66cc66";
-    var badColor = "#ff6666";
-    //Compare the values in the password field
-    //and the confirmation field
-    if(pass1.value == pass2.value){
-        //The passwords match.
-        //Set the color to the good color and inform
-        //the user that they have entered the correct password
-        pass2.style.backgroundColor = goodColor;
-        message.style.color = goodColor;
-        message.innerHTML = "Passwords Match!"
-    }else{
-        //The passwords do not match.
-        //Set the color to the bad color and
-        //notify the user.
-        pass2.style.backgroundColor = badColor;
-        message.style.color = badColor;
-        message.innerHTML = "Passwords Do Not Match!"
-   	 }
-	}
-	</script>
-	<header>
-	<div class="container">
+
+
+<header>
+<div class="container">
 <!-- nav -->
 		<nav class="navbar navbar-expand-lg navbar-light py-4">
 			<!-- logo -->
@@ -81,21 +71,21 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-lg-auto text-center">
 					<li class="nav-item active mr-lg-2">
-						<a class="nav-link" href="Home/home.html">Home
+						<a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item mr-lg-2">
-						<a class="nav-link scroll" href="#welcome">Login</a>
+						<a class="nav-link" href="/freelancer/login">Login</a>
 					</li>
 					<li class="nav-item mr-lg-2">
-						<a class="nav-link scroll" href="#services">Sign up</a>
+						<a class="nav-link" href="/freelancer/signup">Sign up</a>
 					</li>
 					<li class="nav-item mr-2">
-						<a class="nav-link scroll" href="#pricing">Post Project</a>
+						<a class="nav-link " href="/employer/projectSubmit">Post Project</a>
 					</li>
 					<li class="nav-item mr-2">
-						<a class="nav-link scroll" href="#pricing">Browse job</a>
+						<a class="nav-link" href="/project/show">Browse job</a>
 					</li>
 					<li class="last">
 						<a class="contact scroll" href="#contact">Contact Us</a>
@@ -105,44 +95,62 @@
 			<!-- //main nav -->
 		</nav>
 		<!-- //nav -->
-	</div>
-	</header>
+</div>
+</header>
 
 <!-- banner -->
-	<div class="banner">
-		<div class="banner-layer">
-			<div class="container">
-				<div class="agile_banner_info">
+<div class="banner">
+	<div class="banner-layer">
+
+	</div>
+</div>
+<!-- //banner -->
+
+<!--project details-->
+
+	<div class="content-agileits" style="position: absolute;top:10%;left:28%;">
+		<form action="/employer/addUser/" method="post" data-toggle="validator" role="form">
+			{%csrf_token%}
+            <div class="form-group w3layouts w3 w3l">
+				<label for="username" class="control-label"> User Name</label>
+				<input type="text" name="uname" class="form-control" id="username" placeholder="User Name" data-error="Enter Your Name" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group w3l agileinfo wthree w3-agileits">
+				<label for="inputEmail" class="control-label">Email</label>
+				<input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" data-error="This email address is invalid" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group agileinfo wthree w3-agileits agile">
+				<label for="Phone" class="control-label">Phone</label>
+				<input type="text" class="form-control" name="mobile" id="Phone" placeholder="Phone" data-error="Enter Your Phone Number" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group agile agileits-w3layouts w3-agile">
+				<label for="inputPassword" class="control-label">Password</label>
+					<div class="form-group agileits-w3layouts">
+						<input type="password" name="pass1" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
+						<div class="help-block">Minimum of 6 characters</div>
+					</div>
+					<div class="form-group w3-agile">
+						<input type="password" name="pass2" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm Password" required>
+						<div class="help-block with-errors"></div>
+					</div>
 
 				</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-lg">Submit</button>
 			</div>
-		</div>
-	</div>
+		</form>
+    </div>
 
-<!--Header tag completed...-->
-	<div class="signupbox">
-		<section class="left">
-			<h1 style="color:#fff;">Sign Up</h1><br><br>
-			<form action="/employer/addUser/" method="post">
-				{% csrf_token %}
-				<input type="text" name="uname" placeholder="Username"><br>
-				<input type="email" name="email" placeholder="E-mail"><br>
-				<input type="password" name="pass1" id="pass1" placeholder="Password"><br>
-				<input type="password" name="pass2" id="pass2" onkeyup="checkPass(); return false;" placeholder="Retype Password"><br>
-				<input type="tel" name="mobile" id="mobile" placeholder="Mobile Number"><br>
-				<input type="submit" value="Sign Me Up">
-			</form>
-		</section>
-		<!--
-		<span class="or">
-			<strong>OR</strong>
-		</span>
-		<aside class="right">
-			<h3><a href="#">&nbsp Log in with Google+ </a></h3>
-		</aside>
-		-->
-	</div>
-	<footer class="py-5">
+
+<!--//project-->
+<!-- about -->
+<!-- //contact -->
+
+<!-- footer -->
+<footer class="py-5" >
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3 col-sm-6 agileinfo_footer_grid footer-logo">
@@ -198,5 +206,94 @@
 		</div>
 	</div>
 </footer>
+<!-- footer -->
+
+	<!-- Vertically centered Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title text-capitalize text-center" id="exampleModalLongTitle"><span class="fas fa-globe"></span> Web <span class="logo">Booster</span></h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<img src="images/banner1.jpg" class="img-fluid mb-3" alt="Modal Image" />
+			Vivamus eget est in odio tempor interdum. Mauris maximus in fermentum arcu, ac finibus ante. Sed mattis risus at ipsum at elementum, ut auctor turpis cursus. Sed sed odio pharetra, aliquet velit cursus, vehicula enim. Mauris porta aliquet sed magnain, eget laoreet ligula. mollit anim id est laborum.
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary">Save changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- //Vertically centered Modal -->
+
+	<!-- js -->
+	<!-- //js -->
+
+	<!-- banner-type-text -->
+		<script src="{%static 'js/typed.js'%}" type="text/javascript"></script>
+		<script>
+			$(function(){
+
+				$("#typed").typed({
+					// strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
+					stringsElement: $('#typed-strings'),
+					typeSpeed: 30,
+					backDelay: 500,
+					loop: false,
+					contentType: 'html', // or text
+					// defaults to false for infinite loop
+					loopCount: false,
+					callback: function(){ foo(); },
+					resetCallback: function() { newTyped(); }
+				});
+
+				$(".reset").click(function(){
+					$("#typed").typed('reset');
+				});
+
+			});
+
+			function newTyped(){ /* A new typed object */ }
+
+			function foo(){ console.log("Callback"); }
+		</script>
+	<!-- //banner-type-text -->
+
+	<!-- Stats-Number-Scroller-Animation-JavaScript -->
+	<script src="{%static 'js/waypoints.min.js'%}"></script>
+	<script src="{%static 'js/counterup.min.js'%}"></script>
+	<script>
+		jQuery(document).ready(function( $ ) {
+			$('.counter').counterUp({
+				delay: 10,
+				time: 1000
+			});
+		});
+	</script>
+	<!-- //Stats-Number-Scroller-Animation-JavaScript -->
+
+	<!-- flexslider --><!-- for testimonials -->
+	<script defer src="{%static 'js/jquery.flexslider.js'%}"></script>
+	<!--Start-slider-script-->
+		<script type="text/javascript">
+
+		$(window).load(function(){
+		  $('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			  $('body').removeClass('loading');
+			}
+		  });
+		});
+	  </script>
+	<!--End-slider-script-->
+	<!-- //flexslider --><!-- //for testimonials -->
+
+
 </body>
 </html>

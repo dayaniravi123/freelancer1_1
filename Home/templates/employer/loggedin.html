@@ -1,28 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<html>
-    <body bgcolor="#E6E6FA">
-        <h2><font color="green"> Welcome {{full_name}} you are logged in!</font> </h2>
-
-        <br>
-        <p> Click <a href="/employer/logout/">HERE</a> to logout </p>
-        <br>
-        <p>Want to add project then click<a href="/employer/projectSubmit/">Here</a> </p><br><br>
-        <p>Want to Update Your Profile Then Click <a href="#" >Here</a></p>
-        <p>List of project</p>
-        {% for p in projectList %}
-            {% if p.id is None%}
-                <h3>No Projects</h3>
-            {%else%}
-                <a href="/project/showBid/{{p.id}}"><h4>{{p.projectName}}</h4></a>
-                <p>{{p.status}}</p>
-                {%if p.status == "complete"%}
-                    <a href="/employer/satisfy/">Satisfy</a>
-                    <a href="/employer/downloadProject/{{p.projectName}}/">download project</a>
-                {%endif%}
-            {%endif%}
-        {%endfor%}
-        <p>Want to go to Home page then click<a href="/">here</a> </p>
+<head>
+	<title>Freelancer</title>
+	<!-- Meta tag Keywords -->
+	{%load static%}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Web Booster Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<!--// Meta tag Keywords -->
 
 
-    </body>
+
+
+	<!-- css files -->
+	<link rel="stylesheet" href="{%static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="{%static 'employer/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+	<link rel="stylesheet" href="{%static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+
+	<link rel="stylesheet" href="{%static 'css/flexslider.css'%}" type="text/css" media="screen" />
+
+	<link href="{%static 'signup/css/bootstrap.css'%}" rel="stylesheet" type='text/css' media="all" />
+	<link href="{%static 'employer/style.css'%}" rel="stylesheet" type='text/css' media="all" />
+	<script src="{%static 'signup/js/jquery-1.10.2.min.js'%}"></script>
+	<script src="{%static 'signup/js/bootstrap.min.js'%}"></script>
+	<script src="{%static 'signup/js/validator.min.js'%}"></script>
+
+	<!--web font-->
+	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80 0,800i,900,900i&amp;subset=latin-ext"
+	 rel="stylesheet">
+	<script>
+		 $(document).ready(function(){
+  			$("#sa").click(function(){
+    			$("#pf").css("display","block");
+    			$("#pf").addClass("btn");
+  			});
+		 });
+	</script>
+    <style>
+        .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+	<!--//web font-->
+</head>
+
+<body>
+
+
+	<header>
+		<div class="container">
+			<!-- nav -->
+			<nav class="navbar navbar-expand-lg navbar-light py-4">
+				<!-- logo -->
+				<h1>
+					<a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
+						Web <span>Booster</span>
+					</a>
+				</h1>
+				<!-- //logo -->
+				<button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- main nav -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-lg-auto text-center">
+						<li class="nav-item active mr-lg-2">
+							<a class="nav-link" href="/">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item mr-2">
+							<a class="nav-link " href="/employer/projectSubmit">Post Project</a>
+						</li>
+
+						<li class="nav-item mr-2">
+							<a class="nav-link" href="/project/show">Browse job</a>
+						</li>
+						<li class="nav-item mr-2">
+							<a class="nav-link" href="#contact">Contact Us</a>
+						</li>
+
+						<li class="nav-item mr-2">
+							<a class="nav-link" href="#contact">
+
+								<div class="dropdown">
+									<button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user" style="font-size:30px;float:right;"></i></button>
+									<div class="dropdown-content">
+										<a href="#">Edit Profile</a>
+										<a href="/employer/logout/">Log Out</a>
+
+									</div>
+								</div>
+
+
+							</a>
+
+						</li>
+					</ul>
+				</div>
+				<!-- //main nav -->
+			</nav>
+			<!-- //nav -->
+		</div>
+	</header>
+
+	<!-- banner -->
+	<div class="banner" style="height:500px;">
+		<div class="banner-layer" style="height:500px;">
+
+		</div>
+	</div>
+	<div class="container">
+
+		<p style="font-size:30px;font-weight:bold;padding-top:20px;">List of Project</p>
+		{% for p in projectList %}
+			{% if p.id is None%}
+				<h3>No Projects</h3>
+			{%else%}
+				<div class="card" style="padding-bottom: 15px;margin-bottom: 25px;margin-top: 25px;">
+  					<div class="card-header">
+    					{{p.projectName}}
+  					</div>
+  					<div class="card-body">
+    					<p class="card-text" style="margin-bottom:10px;">{{p.description}}</p>
+    					<p  style="margin-bottom:10px;"><span style="font-weight:bold;"> Project Status:</span> {{p.status}}</p>
+						<a href="/project/showBid/{{p.id}}" class="btn btn-primary">Show Bids</a>
+						{%if p.status == "complete"%}
+							<a href="/employer/satisfy/" id="sa" class="btn btn-primary">Satisfy</a>
+							<a href="/employer/downloadProject/{{p.projectName}}/" class="btn btn-primary">download project</a>
+							<a href="https://p-y.tm/29-74ab" target="_blank" style="display:none;" id="pf" class="btn btn-primary">Pay to Freelancer</a>
+
+						{%endif%}
+					</div>
+				</div>
+			{%endif%}
+		{%endfor%}
+	</div>
+</body>
+
 </html>
+
+
+<!--new code-->

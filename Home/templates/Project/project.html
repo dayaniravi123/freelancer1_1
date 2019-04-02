@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Freelancer</title>
-    {% load static %}
+	<meta charset="UTF-8">
+	<title>Freelancer</title>
+	{% load static %}
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
@@ -19,16 +20,17 @@
 		}
 	</script>
 	<!--// Meta tag Keywords -->
-    <!-- css files -->
+	<!-- css files -->
 	<link rel="stylesheet" href="{% static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
-	<link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+	<link rel="stylesheet" href="{% static 'project/css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
 	<link rel="stylesheet" href="{% static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
 	<!-- //css files -->
 
 	<link rel="stylesheet" href="{% static 'css/flexslider.css'%}" type="text/css" media="screen" />
 
 	<!--web font-->
-	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext"
+	 rel="stylesheet">
 	<!--//web font-->
 
 </head>
@@ -36,140 +38,217 @@
 <body>
 
 
-    <header>
-    <div class="container">
-<!-- nav -->
-		<nav class="navbar navbar-expand-lg navbar-light py-4">
-			<!-- logo -->
-			<h1>
-				<a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
-					Web <span>Booster</span>
-				</a>
-			</h1>
-			<!-- //logo -->
-			<button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<!-- main nav -->
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<header>
+		<div class="container">
+			<!-- nav -->
+			<nav class="navbar navbar-expand-lg navbar-light py-4">
+				<!-- logo -->
+				<h1>
+					<a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
+						Web <span>Booster</span>
+					</a>
+				</h1>
+				<!-- //logo -->
+				<button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- main nav -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-lg-auto text-center">
 					<li class="nav-item active mr-lg-2">
-						<a class="nav-link" href="Home/home.html">Home
+						<a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item mr-lg-2">
-						<a class="nav-link scroll" href="#welcome">Login</a>
+						<a class="nav-link" href="/freelancer/login">Login</a>
 					</li>
 					<li class="nav-item mr-lg-2">
-						<a class="nav-link scroll" href="#services">Sign up</a>
+						<a class="nav-link" href="/freelancer/signup">Sign up</a>
 					</li>
 					<li class="nav-item mr-2">
-						<a class="nav-link scroll" href="/Home/project.html">Post Project</a>
+						<a class="nav-link " href="/employer/projectSubmit">Post Project</a>
 					</li>
 					<li class="nav-item mr-2">
-						<a class="nav-link scroll" href="#pricing">Browse job</a>
+						<a class="nav-link" href="/project/show">Browse job</a>
 					</li>
 					<li class="last">
 						<a class="contact scroll" href="#contact">Contact Us</a>
 					</li>
 				</ul>
 			</div>
-			<!-- //main nav -->
-		</nav>
-		<!-- //nav -->
-    </div>
-    </header>
+				<!-- //main nav -->
+			</nav>
+			<!-- //nav -->
+		</div>
+	</header>
 
-<!-- banner -->
-    <div class="banner">
-	<div class="banner-layer">
-		<div class="container">
-			<div >
+	<!-- banner -->
+	<div class="banner">
+		<div class="banner-layer">
+			<p style="position:absolute;top:30%;left:10%;color:white;font-size:20px;">Millions of small businesses use
+				Freelancer to turn their ideas into reality.</p>
+		</div>
+	</div>
 
-			<div style="padding-top:80px;">
-				<section class="container">
-				{%for proj in c %}
-					<div class="card">
-						<div class="card-header">
-							<a href="/project/showBid/{{proj.id}}">{{proj.projectName}}</a>
-  						</div>
-  						<div class="card-body">
-    						<p class="card-text">{{proj.description}}</p>
-							<p class="card-text text-right">{{proj.price}}&nbsp;&nbsp;$</p>
-							<a href="#"><p class="card-text ">{{proj.skills}}</p></a>
-    						<br><a href="/freelancer/placeBid/{{proj.id}}" class="btn btn-primary">Place Bid</a>
-  						</div>
+	<div>
+		<div>
+
+			<div style="padding-top:80px;background-color:#f0f0f0;">
+				<section style="width:95%;margin-left:auto;margin-right:auto;">
+					<div class="row">
+						<div class="col-sm-3">
+							<div class="card">
+									<form action="/project/showProj/" method="post">
+									{%csrf_token%}
+									<ul class="list-group list-group-flush">
+									<li class="list-group-item" style="font-weight:bold;">Filter By</li>
+
+									<li class="list-group-item">
+										<ul style="list-style-type:none;">
+											<li style="font-weight:bold;">Budget:</li>
+											<br>
+											<li><input type="checkbox" name="check" value="fixed"/><a href="#" style="color:black;"> Fixed Price Project</a></li>
+											<li><input type="checkbox" name="check" value="hourly"/><a href="#" style="color:black;"> Hourly Project</a></li>
+										</ul>
+									</li>
+									<li class="list-group-item">
+										<ul style="list-style-type:none;">
+											<li style="font-weight:bold;">Type:</li>
+											<br>
+											<li><input type="checkbox" name="check1" value="local"/><a href="#" style="color:black;"> Local Project</a></li>
+											<li><input type="checkbox" name="check1" value="featured"/><a href="#" style="color:black;"> Featured Project</a></li>
+											<li><input type="checkbox" name="check1" value="recruiter"/><a href="#" style="color:black;"> Recruiter Project</a></li>
+											<li><input type="checkbox" name="check1" value="full"/><a href="#" style="color:black;"> Full Time Project</a></li>
+										</ul>
+									</li>
+									<li class="list-group-item">
+										<ul style="list-style-type:none;">
+											<li style="font-weight:bold;">Skills::</li>
+											<br>
+											<li><input type="checkbox" name="check2" value="net"/><a href="#" style="color:black;"> .NET</a></li>
+											<li><input type="checkbox" name="check2" value="php"/><a href="#" style="color:black;"> PHP</a></li>
+											<li><input type="checkbox" name="check2" value="html"/><a href="#" style="color:black;"> HTML</a></li>
+											<li><input type="checkbox" name="check2" value="java"/><a href="#" style="color:black;"> JAVA SCRIPT</a></li>
+										</ul>
+									</li>
+									<li class="list-group-item">
+										<input value="filter" type="submit" class="btn btn-primary">
+									</li>
+								</ul>
+								</form>
+							</div>
+						</div>
+						<div class="col-sm-9" style="background-color:white;padding-left:1px;padding-right:1px;">
+							<table class="table table-hover">
+								<tr>
+                                    <td>
+                                        <form action="/project/search/" method="post" class="form-inline my-2 my-lg-0">
+                                            {%csrf_token%}
+											<p>Search project:</p>
+                                            <input name="search" class="form-control mr-sm-2" style="width:50%;" type="search" placeholder="Search">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {%for proj in c %}
+							    <tr>
+									<td>
+										<p><a href="/project/showBid/{{proj.id}}">{{proj.projectName}}</a></p>
+										<p>{{proj.description}}</p>
+										<p>{{proj.price}}&nbsp;&nbsp;$</p>
+										<p>{{proj.skills}}</p>
+										<p><a href="/freelancer/placeBid/{{proj.id}}" class="btn btn-primary">Place Bid</a></p>
+
+									</td>
+								</tr>
+                                {%endfor%}
+							</table>
+							<nav aria-label="Page navigation example">
+  								<ul class="pagination">
+    								<li class="page-item">
+      									<a class="page-link" href="#" aria-label="Previous">
+        									<span aria-hidden="true">&laquo;</span>
+      									</a>
+   									</li>
+    								<li class="page-item"><a class="page-link" href="#">1</a></li>
+    								<li class="page-item"><a class="page-link" href="#">2</a></li>
+    								<li class="page-item"><a class="page-link" href="#">3</a></li>
+    								<li class="page-item">
+      									<a class="page-link" href="#" aria-label="Next">
+        									<span aria-hidden="true">&raquo;</span>
+      									</a>
+									</li>
+ 								</ul>
+							</nav>
+						</div>
+
 					</div>
-					<br>
-					<br>
-				{%endfor%}
 				</section>
 
 			</div>
 
-			</div>
 		</div>
 	</div>
-    </div>
 
-<footer class="py-5">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3 col-sm-6 agileinfo_footer_grid footer-logo">
-				<h2><a href="#"><i class="fas fa-globe"></i>
-					Web <span>Booster</span></a></h2>
-			</div>
-			<div class="col-lg-2 col-sm-6 agileinfo_footer_grid">
-				<h3 class="mb-3"> Navigation</h3>
-				<div class="agileinfo-social-grids footer-w3icons">
-					<ul>
-						<li class="mb-1"><a href="#"><i class="fa fa-home"></i>  Home</a></li>
-						<li class="mb-1"><a href="#"><i class="fa fa-home"></i> About Us</a></li>
-						<li class="mb-1"><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
-						<li class="mb-1"><a href="#"><i class="fas fa-users"></i> Team Members</a></li>
-						<li class="mb-1"><a href="#"><i class="fas fa-image"></i> Gallery</a></li>
-						<li class="mb-1"><a href="#"><i class="fas fa-envelope-open"></i> Contact</a></li>
+	<footer class="py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-sm-6 agileinfo_footer_grid footer-logo">
+					<h2><a href="#"><i class="fas fa-globe"></i>
+							Web <span>Booster</span></a></h2>
+				</div>
+				<div class="col-lg-2 col-sm-6 agileinfo_footer_grid">
+					<h3 class="mb-3"> Navigation</h3>
+					<div class="agileinfo-social-grids footer-w3icons">
+						<ul>
+							<li class="mb-1"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+							<li class="mb-1"><a href="#"><i class="fa fa-home"></i> About Us</a></li>
+							<li class="mb-1"><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+							<li class="mb-1"><a href="#"><i class="fas fa-users"></i> Team Members</a></li>
+							<li class="mb-1"><a href="#"><i class="fas fa-image"></i> Gallery</a></li>
+							<li class="mb-1"><a href="#"><i class="fas fa-envelope-open"></i> Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
+					<h3 class="mb-3"> Address</h3>
+					<ul class="con_inner_text">
+						<li class="mb-2"><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, <label> New York City.</label></li>
+						<li class="mb-2"><span class="fas fa-envelope-open" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
+						<li class="mb-1"><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+						<li class="mb-1"><span class="fa fa-clock" aria-hidden="true"></span> 8am to 6pm</li>
+						<li class="mb-1"><span class="fa fa-globe" aria-hidden="true"></span> <a href="#">info@website.com</a></li>
 					</ul>
 				</div>
-			</div>
-			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
-				<h3 class="mb-3"> Address</h3>
-				<ul class="con_inner_text">
-					<li class="mb-2"><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, <label> New York City.</label></li>
-					<li class="mb-2"><span class="fas fa-envelope-open" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
-					<li class="mb-1"><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
-					<li class="mb-1"><span class="fa fa-clock" aria-hidden="true"></span> 8am to 6pm</li>
-					<li class="mb-1"><span class="fa fa-globe" aria-hidden="true"></span> <a href="#">info@website.com</a></li>
-				</ul>
-			</div>
-			<div class="col-lg-4 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
-				<h3 class="mb-3">Newsletter</h3>
-				<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<form action="#" method="post">
-					<input type="email" name="Email" placeholder="Email Address" required="">
-					<input type="submit" value="Subscribe">
-				</form>
-			</div>
+				<div class="col-lg-4 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
+					<h3 class="mb-3">Newsletter</h3>
+					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<form action="#" method="post">
+						<input type="email" name="Email" placeholder="Email Address" required="">
+						<input type="submit" value="Subscribe">
+					</form>
+				</div>
 
-			<!-- copyright -->
-			<div class="col-lg-6 copyleft pl-0 pt-4 mt-4">
-				<p>© 2018 Web Booster. All Rights Reserved | Design by <a href="http://www.W3Layouts.com" target="_blank">W3Layouts</a></p>
-			</div>
-			<div class="col-lg-6 copyright pr-0 pt-4 mt-4">
-				<ul class="social">
-					<li class="mr-3"><span class="fab mr-1 fa-facebook-f" aria-hidden="true"></span>Facebook</li>
-					<li class="mr-3"><span class="fab mr-1 fa-twitter" aria-hidden="true"></span>Twitter</li>
-					<li class="mr-3"><span class="fab mr-1 fa-linkedin" aria-hidden="true"></span>Linkedin</li>
-					<li class=""><span class="fab mr-1 fa-google-plus" aria-hidden="true"></span>Google-plus</li>
-				</ul>
-			</div>
-			<!-- //copyright -->
+				<!-- copyright -->
+				<div class="col-lg-6 copyleft pl-0 pt-4 mt-4">
+					<p>© 2018 Web Booster. All Rights Reserved | Design by <a href="http://www.W3Layouts.com" target="_blank">W3Layouts</a></p>
+				</div>
+				<div class="col-lg-6 copyright pr-0 pt-4 mt-4">
+					<ul class="social">
+						<li class="mr-3"><span class="fab mr-1 fa-facebook-f" aria-hidden="true"></span>Facebook</li>
+						<li class="mr-3"><span class="fab mr-1 fa-twitter" aria-hidden="true"></span>Twitter</li>
+						<li class="mr-3"><span class="fab mr-1 fa-linkedin" aria-hidden="true"></span>Linkedin</li>
+						<li class=""><span class="fab mr-1 fa-google-plus" aria-hidden="true"></span>Google-plus</li>
+					</ul>
+				</div>
+				<!-- //copyright -->
 
+			</div>
 		</div>
-	</div>
-</footer>
+	</footer>
 
 </body>
+
 </html>

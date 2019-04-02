@@ -1,10 +1,12 @@
 import datetime
 import io
+import random
 import zipfile
 
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, render_to_response
-from employer.models import employers, project
+from employer.models import employers, project, chat
 from django.contrib import auth
 # Create your views here.
 from django.contrib.auth.models import User
@@ -25,6 +27,7 @@ def addUser(request):
     mobile=request.POST.get('mobile')
     Emp=employers(EmployerName=uname, Password=password1,MobileNumber=mobile,EmailId=email)
     user = User.objects.create_user(username=uname, email=email, password=password1)
+    request.session["email"]=email
     Emp.save()
     user.save()
     id=employers.objects.get(EmployerName=uname)
@@ -32,7 +35,23 @@ def addUser(request):
 
 
 def registered(request):
-    return render_to_response('employer/addEmployer.html')
+    c={}
+    c.update(csrf(request))
+    otp=random.randint(0,100000)
+    subject = "Please Don't Share OTP"
+    message = "\n\nYour OTP is "+str(otp)+".\n\n-Exam Hub.\n"
+    # from_email = settings.EMAIL_HOST_USER
+    request.session["otp"]=str(otp)
+    to_list = [request.session["email"]]
+    send_mail(subject, message, 'freelancerdjango@gmail.com', to_list)
+    return render_to_response('employer/addEmployer.html',c)
+
+def varified(request):
+    tOtp=request.POST.get('otp','')
+    sOtp=request.session["otp"]
+    if tOtp==sOtp:
+        return HttpResponseRedirect('/employer/login/')
+    return render_to_response('employer/error.html')
 
 def login(request):
     c = {}
@@ -52,7 +71,7 @@ def auth_view(request):
         return HttpResponseRedirect('/employer/invalidlogin/')
 
 
-@login_required(login_url='/employer/freelancer/')
+@login_required(login_url='/employer/login/')
 def loggedin(request):
     emp=employers.objects.get(EmployerName=request.session['ename'])
     p=[]
@@ -71,6 +90,7 @@ def logout(request):
     auth.logout(request)
     return render_to_response('employer/logout.html')
 
+@login_required(login_url='/employer/login/')
 def projectSubmit(request):
     c={}
     c.update(csrf(request))
@@ -81,6 +101,7 @@ def handle_uploaded_file(f):
         for chunk in f.chunks():
             destination.write(chunk)
 
+@login_required(login_url='/employer/login/')
 def projectSubmission(request):
     projectName=request.POST.get('pname','')
     description=request.POST.get('description','')
@@ -105,12 +126,20 @@ def projectSubmission(request):
     y=sDate.year
     eDate=datetime.datetime(y,m,changedDate)
     bidN=0
+    sDate = datetime.strptime(sDate, '%Y-%m-%d')
+    sDate = sDate.strftime('%Y-%m-%d')
     p=project(projectName=projectName,description=description,files=file,skills=skills,typeOfProject=typeOfProject,price=price,payType=payType,bidNumber=bidN,startDate=sDate,endDate=eDate,EmpId_id=empy)
     p.save()
     return render_to_response('employer/success.html')
 
 def satisfy(request):
-    return render_to_response('employer/satisfy.html')
+    emp = employers.objects.get(EmployerName=request.session['ename'])
+    p = []
+    p = project.objects.filter(EmpId_id=emp.id)
+    c1 = {}
+    c1.update(csrf(request))
+    return render_to_response('employer/satisfy.html', {"full_name": request.session['ename'], "projectList": p}, c1)
+
 
 def downloadProject(request,name):
     filename = 'Home/static/upload/project/'+name+".zip"
@@ -122,3 +151,15 @@ def downloadProject(request,name):
     response['Content-Disposition'] = 'attachment; filename=%s' % filename
     response['Content-Length'] = zip_io.tell()
     return response
+
+
+def chatInitiated(request):
+    c={}
+    c.update(csrf(request))
+    return render_to_response('employer/chat.html',c)
+
+def chatBeginning(request):
+    msg=request.POST.get('msg','')
+    ch=chat(messageReq=msg,messageRes="")
+    ch.save()
+    return render_to_response('employer/loggedin.html')

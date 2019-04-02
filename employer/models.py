@@ -54,3 +54,10 @@ class bid(models.Model):
     team=models.CharField(default='No',max_length=10)
     proId=models.ForeignKey(project,on_delete=models.CASCADE)
 
+class chat(models.Model):
+    messageReq=models.CharField(max_length=50)
+    messageRes=models.CharField(max_length=50,default=" ")
+
+class admin(models.Model):
+    adminName=models.CharField(max_length=50)
+    password=models.CharField(max_length=50)

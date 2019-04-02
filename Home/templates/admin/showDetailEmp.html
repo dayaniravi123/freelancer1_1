@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Freelancer</title>
+	{% load static %}
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Web Booster Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+    <script type="text/javascript">
+    	function add_chatinline()
+    	{
+    		var hccid=51196150;
+    		var nt=document.createElement("script");
+    		nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;
+    		var ct=document.getElementsByTagName("script")[0];
+    		ct.parentNode.insertBefore(nt,ct);
+    	}
+		add_chatinline();
+	</script>
+	<!-- css files -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+	<link rel="stylesheet" href="{% static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+
+	<link rel="stylesheet" href="{% static 'css/flexslider.css'%}" type="text/css" media="screen" />
+
+	<!--web font-->
+	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<!--//web font-->
+
+	    <style>
+        .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+</head>
+
+<body>
+
+
+<header>
+<div class="container">
+<!-- nav -->
+		<nav class="navbar navbar-expand-lg navbar-light py-4">
+			<!-- logo -->
+			<h1>
+				<a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
+					Web <span>Booster</span>
+				</a>
+			</h1>
+			<!-- //logo -->
+			<button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- main nav -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-lg-auto text-center">
+					<li class="nav-item active mr-lg-2">
+						<a class="nav-link" href="/admin/showHome">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item mr-2">
+						<a class="nav-link " href="/admin/showFreelancer">Freelancers</a>
+					</li>
+					<li class="nav-item mr-2">
+						<a class="nav-link" href="/admin/showEmployer">Employer</a>
+					</li>
+					<li class="nav-item mr-2">
+						<div class="dropdown">
+							<button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user" style="font-size:30px;float:right;"></i></button>
+							<div class="dropdown-content">
+								<a href="/admin/logout/">Log Out</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- //main nav -->
+		</nav>
+		<!-- //nav -->
+</div>
+</header>
+
+    <!-- banner -->
+    <div class="banner">
+        <div class="banner-layer">
+            <p style="position:absolute;top:30%;left:10%;color:white;font-size:20px;">Millions of small businesses use
+                Freelancer to turn their ideas into reality.</p>
+        </div>
+    </div>
+
+    <div>
+        <div>
+
+            <div style="padding-top:80px;background-color:#f0f0f0;padding-bottom:20px;">
+                <section style="width:95%;margin-left:auto;margin-right:auto;">
+                    <p>Freelancer</p>
+					<div style="background-color:white;padding-left:1px;padding-right:1px;">
+                        <table class="table table-hover" style="margin-bottom:0;">
+                            <tr>
+                                <td>
+									<p>Id&nbsp;&nbsp;:&nbsp;&nbsp;{{emp.id}}</p>
+                                    <p>Employer Name&nbsp;&nbsp;:&nbsp;&nbsp;{{emp.EmployerName}}</p>
+                                    <p>Password&nbsp;&nbsp;:&nbsp;&nbsp;{{emp.Password}}</p>
+                                    <p>Email Id&nbsp;&nbsp;:&nbsp;&nbsp;{{emp.EmailId}}</p>
+                                    <p>Mobile Number&nbsp;&nbsp;:&nbsp;&nbsp;{{emp.MobileNumber}}</p>
+
+                                    <p><a class="btn btn-outline-danger" href="/admin/block/{{fre.id}}">Block Employer</a></p>
+
+									<!--
+                                    <p><a href="/admin/showFreelancer/{{fre.id}}" class="btn btn-primary">Show Bids</a></p>
+									-->
+                                </td>
+                            </tr>
+
+                        </table>
+                        <a href="/admin/showEmployer">Back To List</a>
+                    </div>
+
+            </section>
+
+        </div>
+
+    </div>
+    </div>
+
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 agileinfo_footer_grid footer-logo">
+                    <h2><a href="#"><i class="fas fa-globe"></i>
+                            Web <span>Booster</span></a></h2>
+                </div>
+                <div class="col-lg-2 col-sm-6 agileinfo_footer_grid">
+                    <h3 class="mb-3"> Navigation</h3>
+                    <div class="agileinfo-social-grids footer-w3icons">
+                        <ul>
+                            <li class="mb-1"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="mb-1"><a href="#"><i class="fa fa-home"></i> About Us</a></li>
+                            <li class="mb-1"><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+                            <li class="mb-1"><a href="#"><i class="fas fa-users"></i> Team Members</a></li>
+                            <li class="mb-1"><a href="#"><i class="fas fa-image"></i> Gallery</a></li>
+                            <li class="mb-1"><a href="#"><i class="fas fa-envelope-open"></i> Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
+                    <h3 class="mb-3"> Address</h3>
+                    <ul class="con_inner_text">
+                        <li class="mb-2"><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, <label>
+                                New York City.</label></li>
+                        <li class="mb-2"><span class="fas fa-envelope-open" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
+                        <li class="mb-1"><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+                        <li class="mb-1"><span class="fa fa-clock" aria-hidden="true"></span> 8am to 6pm</li>
+                        <li class="mb-1"><span class="fa fa-globe" aria-hidden="true"></span> <a href="#">info@website.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
+                    <h3 class="mb-3">Newsletter</h3>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                        id est laborum.</p>
+                    <form action="#" method="post">
+                        <input type="email" name="Email" placeholder="Email Address" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+
+                <!-- copyright -->
+                <div class="col-lg-6 copyleft pl-0 pt-4 mt-4">
+                    <p>© 2018 Web Booster. All Rights Reserved | Design by <a href="http://www.W3Layouts.com" target="_blank">W3Layouts</a></p>
+                </div>
+                <div class="col-lg-6 copyright pr-0 pt-4 mt-4">
+                    <ul class="social">
+                        <li class="mr-3"><span class="fab mr-1 fa-facebook-f" aria-hidden="true"></span>Facebook</li>
+                        <li class="mr-3"><span class="fab mr-1 fa-twitter" aria-hidden="true"></span>Twitter</li>
+                        <li class="mr-3"><span class="fab mr-1 fa-linkedin" aria-hidden="true"></span>Linkedin</li>
+                        <li class=""><span class="fab mr-1 fa-google-plus" aria-hidden="true"></span>Google-plus</li>
+                    </ul>
+                </div>
+                <!-- //copyright -->
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

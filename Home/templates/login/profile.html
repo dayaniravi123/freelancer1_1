@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head -->
+
+<head>
+
+    {%load static%}
+
+
+    <title>Profile</title>
+
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="Multi Tabs Resume Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //Meta-Tags -->
+
+    <!-- Custom-Style-Sheet -->
+    <link rel="stylesheet" href="{%static 'profile/css/style.css'%}" type="text/css" media="all">
+    <!-- //Custom-Style-Sheet -->
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="{%static 'profile///fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900'%}"
+        type="text/css" media="all">
+    <link rel="stylesheet" href="{%static 'profile///fonts.googleapis.com/css?family=Montserrat:400,700'%}" type="text/css"
+        media="all">
+    <!-- //Fonts -->
+
+    <!-- Default-JavaScript -->
+    <script type="text/javascript" src="{%static 'profile/js/jquery.min.js'%}"></script>
+
+
+
+    <link href="{%static 'signup/css/bootstrap.css'%}" rel="stylesheet" type='text/css' media="all" />
+    <link href="{%static 'signup/css/style.css'%}" rel="stylesheet" type='text/css' media="all" />
+    <script src="{%static 'signup/js/jquery-1.10.2.min.js'%}"></script>
+    <script src="{%static 'signup/js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'signup/js/validator.min.js'%}"></script>
+
+
+    <!-- css files -->
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="{%static 'profile/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+    <link rel="stylesheet" href="{%static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
+
+    <link rel="stylesheet" href="{%static 'css/flexslider.css'%}" type="text/css" media="screen" />
+
+    <!--web font-->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext"
+        rel="stylesheet">
+    <!--//web font-->
+
+	<style>
+        .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+
+
+
+
+
+
+</head>
+<!-- //Head -->
+
+
+
+<!-- Body -->
+
+<body>
+
+    <header>
+        <div class="container">
+            <!-- nav -->
+            <nav class="navbar navbar-expand-lg navbar-light py-4">
+                <!-- logo -->
+                <h1>
+                    <a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
+                        Web <span>Booster</span>
+                    </a>
+                </h1>
+                <!-- //logo -->
+                <button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- main nav -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-lg-auto text-center">
+                        <li class="nav-item active mr-lg-2">
+                            <a class="nav-link" href="/">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link " href="/employer/projectSubmit">Post Project</a>
+                        </li>
+
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" href="/project/show">Browse job</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" href="#contact">Contact Us</a>
+                        </li>
+
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" href="#contact">
+
+                                <div class="dropdown">
+                                    <button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user"
+                                            style="font-size:30px;float:right;"></i></button>
+                                    <div class="dropdown-content">
+                                        <a href="/freelancer/updateprofile/">Edit Profile</a>
+                                        <a href="/freelancer/viewprofile/">View Profile</a>
+
+                                        <a href="/freelancer/uploadProject/">upload project</a>
+                                        <a href="/freelancer/logout/">Log Out</a>
+
+                                    </div>
+                                </div>
+
+
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+                <!-- //main nav -->
+            </nav>
+            <!-- //nav -->
+        </div>
+    </header>
+
+    <!-- banner -->
+    <div class="banner">
+        <div class="banner-layer">
+
+        </div>
+    </div>
+    <!-- //banner -->
+
+
+
+    <div class="containerw3layouts-agileits" style="position:absolute;top:15%;left:25%;">
+
+        <div id="verticalTab" class="resp-vtabs w3-agile" style="display: block; width: 100%; margin: 0px;">
+
+            <ul class="resp-tabs-list agileits-w3layouts">
+                <li class="resp-tab-item"><span>About</span></li>
+                <li class="resp-tab-item"><span>Skills</span></li>
+                <li class="resp-tab-item"><span>Contact</span></li>
+            </ul>
+
+            <div class="resp-tabs-container">
+
+                <div class="resp-tab-content">
+                    <div class="agileabout">
+                        <div class="agileabout-image w3-agileits">
+                            <img src="{%static 'profile/images/man.jpg'%}" alt="W3layouts">
+                        </div>
+                        <div class="agileabout-info">
+                            <ul>
+
+                                <li>
+                                    <div class="li1">Name</div>
+                                    <div class="li2">:</div>
+                                    <div class="li3">{{fre.freelancerName}}</div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <li>
+                                    <div class="li1">Phone</div>
+                                    <div class="li2">:</div>
+                                    <div class="li3">{{fre.mobileNumber}}</div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <li>
+                                    <div class="li1">Email</div>
+                                    <div class="li2 agileinfo">:</div>
+                                    <div class="li3"><a class="mail">{{fre.emailId}}</a></div>
+                                    <div class="clearfix"></div>
+                                </li>
+
+                                <li>
+                                    <div class="li1 agileinfo">Address</div>
+                                    <div class="li2">:</div>
+                                    <div class="li3 w3-agileits">{{fre.address}}</div>
+                                    <div class="clearfix wthree"></div>
+                                </li>
+                                <li>
+                                    <div class="li1 agileinfo">Bids</div>
+                                    <div class="li2">:</div>
+                                    <div class="li3 w3-agileits">{{fre.bids}}</div>
+                                    <div class="clearfix wthree"></div>
+                                </li>
+                                <li>
+                                    <div class="agileitinfo"><a href="/freelancer/membership/">Get Membership</a> </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+
+                <div class="resp-tab-content">
+                    <div class="our-skills">
+                        <div class="single-skill">
+                            <p class="lead">HTML</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-1">90%</div>
+                            </div>
+                        </div>
+                        <div class="single-skill">
+                            <p class="lead">CSS</p>
+                            <div class="progress wthree">
+                                <div class="progress-bar progress-bar-2">80%</div>
+                            </div>
+                        </div>
+                        <div class="single-skill">
+                            <p class="lead">JAVASCRIPT</p>
+                            <div class="progress w3-agile">
+                                <div class="progress-bar progress-bar-3">85%</div>
+                            </div>
+                        </div>
+                        <div class="single-skill">
+                            <p class="lead">PHP</p>
+                            <div class="progress">
+                                <div class="progress-bar agile progress-bar-4">95%</div>
+                            </div>
+                        </div>
+                        <div class="single-skill">
+                            <p class="lead">SQL</p>
+                            <div class="progress w3layouts">
+                                <div class="progress-bar progress-bar-5">75%</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="resp-tab-content">
+                    <div class="agileabout-info aitsabout">
+                        <ul>
+                            <li>
+                                <div class="li1">Name</div>
+                                <div class="li2">:</div>
+                                <div class="li3">{{fre.freelancerName}}</div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="li1">Phone</div>
+                                <div class="li2">:</div>
+                                <div class="li3">{{fre.mobileNumber}}</div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="li1">Email</div>
+                                <div class="li2 agileinfo">:</div>
+                                <div class="li3"><a class="mail">{{fre.emailId}}</a></div>
+                                <div class="clearfix"></div>
+                            </li>
+
+                            <li>
+                                <div class="li1 agileinfo">Address</div>
+                                <div class="li2">:</div>
+                                <div class="li3 w3-agileits">{{fre.address}}</div>
+                                <div class="clearfix wthree"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="social-icons w3layouts agileits">
+                        <h4>Follow Me on</h4>
+                        <ul>
+                            <li class="fb w3ls w3layouts agileits"><a href="#"><span class="icons w3layouts agileits"></span><span
+                                        class="text w3layouts agileits">Facebook</span></a></li>
+                            <li class="twt w3ls w3layouts agileits"><a href="#"><span class="icons w3layouts agileits"></span><span
+                                        class="text w3layouts agileits">Twitter</span></a></li>
+                            <li class="ggp w3ls w3layouts agileits"><a href="#"><span class="icons w3layouts agileits"></span><span
+                                        class="text w3layouts agileits">Google+</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+            <div class="clear w3-agile"></div>
+
+        </div>
+
+    </div>
+
+
+
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 agileinfo_footer_grid footer-logo">
+                    <h2><a href="#"><i class="fas fa-globe"></i>
+                            Web <span>Booster</span></a></h2>
+                </div>
+                <div class="col-lg-2 col-sm-6 agileinfo_footer_grid">
+                    <h3 class="mb-3"> Navigation</h3>
+                    <div class="agileinfo-social-grids footer-w3icons">
+                        <ul>
+                            <li class="mb-1"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="mb-1"><a href="#"><i class="fa fa-home"></i> About Us</a></li>
+                            <li class="mb-1"><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+                            <li class="mb-1"><a href="#"><i class="fas fa-users"></i> Team Members</a></li>
+                            <li class="mb-1"><a href="#"><i class="fas fa-image"></i> Gallery</a></li>
+                            <li class="mb-1"><a href="#"><i class="fas fa-envelope-open"></i> Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
+                    <h3 class="mb-3"> Address</h3>
+                    <ul class="con_inner_text">
+                        <li class="mb-2"><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, <label>
+                                New York City.</label></li>
+                        <li class="mb-2"><span class="fas fa-envelope-open" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
+                        <li class="mb-1"><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+                        <li class="mb-1"><span class="fa fa-clock" aria-hidden="true"></span> 8am to 6pm</li>
+                        <li class="mb-1"><span class="fa fa-globe" aria-hidden="true"></span> <a href="#">info@website.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
+                    <h3 class="mb-3">Newsletter</h3>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+                        id est laborum.</p>
+                    <form action="#" method="post">
+                        <input type="email" name="Email" placeholder="Email Address" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+
+                <!-- copyright -->
+                <div class="col-lg-6 copyleft pl-0 pt-4 mt-4">
+                    <p>© 2018 Web Booster. All Rights Reserved | Design by <a href="http://www.W3Layouts.com" target="_blank">W3Layouts</a></p>
+                </div>
+                <div class="col-lg-6 copyright pr-0 pt-4 mt-4">
+                    <ul class="social">
+                        <li class="mr-3"><span class="fab mr-1 fa-facebook-f" aria-hidden="true"></span>Facebook</li>
+                        <li class="mr-3"><span class="fab mr-1 fa-twitter" aria-hidden="true"></span>Twitter</li>
+                        <li class="mr-3"><span class="fab mr-1 fa-linkedin" aria-hidden="true"></span>Linkedin</li>
+                        <li class=""><span class="fab mr-1 fa-google-plus" aria-hidden="true"></span>Google-plus</li>
+                    </ul>
+                </div>
+                <!-- //copyright -->
+
+            </div>
+        </div>
+    </footer>
+    <!-- footer -->
+
+    <!-- Vertically centered Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-capitalize text-center" id="exampleModalLongTitle"><span class="fas fa-globe"></span>
+                        Web <span class="logo">Booster</span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="images/banner1.jpg" class="img-fluid mb-3" alt="Modal Image" />
+                    Vivamus eget est in odio tempor interdum. Mauris maximus in fermentum arcu, ac finibus ante. Sed
+                    mattis risus at ipsum at elementum, ut auctor turpis cursus. Sed sed odio pharetra, aliquet velit
+                    cursus, vehicula enim. Mauris porta aliquet sed magnain, eget laoreet ligula. mollit anim id est
+                    laborum.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Vertically centered Modal -->
+
+
+
+    <!-- Necessary-JavaScript-Files-&-Links -->
+
+    <!-- Tabs-JavaScript -->
+    <script src="{%static 'profile/js/easyResponsiveTabs.js'%}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default',
+                width: 'auto',
+                fit: true,
+                closed: 'accordion',
+                activate: function (event) {
+                    var $tab = $(this);
+                    var $info = $('#tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+            $('#verticalTab').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true
+            });
+        });
+    </script>
+    <!-- //Tabs-JavaScript -->
+
+
+    <!-- //Necessary-JavaScript-Files-&-Links -->
+
+
+
+</body>
+<!-- //Body -->
+
+</html>

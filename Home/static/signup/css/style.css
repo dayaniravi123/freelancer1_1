@@ -14,7 +14,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	font:inherit;
 	vertical-align:baseline;
 }
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, section {
 	display: block;
 }
 ol,ul {
@@ -69,12 +69,6 @@ a {
 .vertical-top {	
 	vertical-align:top;
 }/* vertical align top */
-nav.vertical ul li {	
-	display:block;
-}/* vertical menu */
-nav.horizontal ul li {	
-	display: inline-block;
-}/* horizontal menu */
 img {
 	max-width:100%;
 }
