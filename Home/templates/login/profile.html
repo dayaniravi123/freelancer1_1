@@ -8,7 +8,7 @@
     {%load static%}
 
 
-    <title>Profile</title>
+    <title>Employer Hub</title>
 
     <!-- Meta-Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -111,7 +111,7 @@
                 <!-- logo -->
                 <h1>
                     <a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
-                        Web <span>Booster</span>
+                        Employment <span>Hub</span>
                     </a>
                 </h1>
                 <!-- //logo -->
@@ -127,35 +127,26 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item mr-2">
-                            <a class="nav-link " href="/employer/projectSubmit">Post Project</a>
-                        </li>
-
-                        <li class="nav-item mr-2">
+                       <li class="nav-item mr-2">
                             <a class="nav-link" href="/project/show">Browse job</a>
                         </li>
                         <li class="nav-item mr-2">
                             <a class="nav-link" href="#contact">Contact Us</a>
                         </li>
-
                         <li class="nav-item mr-2">
-                            <a class="nav-link" href="#contact">
+                            <div class="dropdown">
+                                <button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user"
+                                        style="font-size:30px;float:right;"></i></button>
+                                <div class="dropdown-content">
+                                    <a style="text-align:left;" href="/freelancer/updateprofile/">Edit Profile</a>
+                                    <a style="text-align:left;" href="/freelancer/viewprofile/">View Profile</a>
+                                    <a style="text-align:left;" href="/freelancer/getMoney/">Withdraw Money </a>
+                                    <a style="text-align:left;" href="/freelancer/uploadProject/">Upload Project</a>
+                                    <a style="text-align:left;" href="/freelancer/loggedin/">Back To Console</a>
+									<a style="text-align:left;" href="/freelancer/logout/">Log Out</a>
 
-                                <div class="dropdown">
-                                    <button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user"
-                                            style="font-size:30px;float:right;"></i></button>
-                                    <div class="dropdown-content">
-                                        <a href="/freelancer/updateprofile/">Edit Profile</a>
-                                        <a href="/freelancer/viewprofile/">View Profile</a>
-
-                                        <a href="/freelancer/uploadProject/">upload project</a>
-                                        <a href="/freelancer/logout/">Log Out</a>
-
-                                    </div>
                                 </div>
-
-
-                            </a>
+                            </div>
 
                         </li>
                     </ul>
@@ -328,64 +319,62 @@
 
 
 
-    <footer class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6 agileinfo_footer_grid footer-logo">
-                    <h2><a href="#"><i class="fas fa-globe"></i>
-                            Web <span>Booster</span></a></h2>
-                </div>
-                <div class="col-lg-2 col-sm-6 agileinfo_footer_grid">
-                    <h3 class="mb-3"> Navigation</h3>
-                    <div class="agileinfo-social-grids footer-w3icons">
-                        <ul>
-                            <li class="mb-1"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="mb-1"><a href="#"><i class="fa fa-home"></i> About Us</a></li>
-                            <li class="mb-1"><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
-                            <li class="mb-1"><a href="#"><i class="fas fa-users"></i> Team Members</a></li>
-                            <li class="mb-1"><a href="#"><i class="fas fa-image"></i> Gallery</a></li>
-                            <li class="mb-1"><a href="#"><i class="fas fa-envelope-open"></i> Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
-                    <h3 class="mb-3"> Address</h3>
-                    <ul class="con_inner_text">
-                        <li class="mb-2"><span class="fa fa-map-marker" aria-hidden="true"></span>1234k Avenue, <label>
-                                New York City.</label></li>
-                        <li class="mb-2"><span class="fas fa-envelope-open" aria-hidden="true"></span> <a href="mailto:info@example.com">info@example.com</a></li>
-                        <li class="mb-1"><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
-                        <li class="mb-1"><span class="fa fa-clock" aria-hidden="true"></span> 8am to 6pm</li>
-                        <li class="mb-1"><span class="fa fa-globe" aria-hidden="true"></span> <a href="#">info@website.com</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
-                    <h3 class="mb-3">Newsletter</h3>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                        id est laborum.</p>
-                    <form action="#" method="post">
-                        <input type="email" name="Email" placeholder="Email Address" required="">
-                        <input type="submit" value="Subscribe">
-                    </form>
-                </div>
+   <footer class="py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-sm-6 agileinfo_footer_grid footer-logo">
+				<h2><a href="#"><i class="fas fa-globe"></i>
+					Employment <span>Hub</span></a></h2>
+			</div>
+			<div class="col-lg-2 col-sm-6 agileinfo_footer_grid">
+				<h3 class="mb-3"> Navigation</h3>
+				<div class="agileinfo-social-grids footer-w3icons">
+					<ul>
+						<li class="mb-1"><a href="#"><i class="fa fa-home"></i>  Home</a></li>
+						<li class="mb-1"><a href="#"><i class="fa fa-home"></i> Login</a></li>
+						<li class="mb-1"><a href="#"><i class="fas fa-cogs"></i> Signup</a></li>
+						<li class="mb-1"><a href="#"><i class="fas fa-users"></i> Browse Job</a></li>
+						<li class="mb-1"><a href="#"><i class="fas fa-image"></i> Post Project</a></li>
+						<li class="mb-1"><a href="#"><i class="fas fa-envelope-open"></i> Contact</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
+				<h3 class="mb-3"> Address</h3>
+				<ul class="con_inner_text">
+					<li class="mb-2"><span class="fa fa-map-marker" aria-hidden="true"></span>46 Shubhlakshmi Soc., <label> nana varachha.</label></li>
+					<li class="mb-2"><span class="fas fa-envelope-open" aria-hidden="true"></span> <a href="mailto:freelancerdjango@gmail.com">freelancerdjango@gmail.com</a></li>
+					<li class="mb-1"><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+					<li class="mb-1"><span class="fa fa-clock" aria-hidden="true"></span> 8am to 6pm</li>
+					<li class="mb-1"><span class="fa fa-globe" aria-hidden="true"></span> <a href="#">EmploymentHub.com</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-4 col-sm-6 mt-lg-0 mt-sm-5 mt-3 agileinfo_footer_grid">
+				<h3 class="mb-3">Newsletter</h3>
+				<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<form action="#" method="post">
+					<input type="email" name="Email" placeholder="Email Address" required="">
+					<input type="submit" value="Subscribe">
+				</form>
+			</div>
 
-                <!-- copyright -->
-                <div class="col-lg-6 copyleft pl-0 pt-4 mt-4">
-                    <p>© 2018 Web Booster. All Rights Reserved | Design by <a href="http://www.W3Layouts.com" target="_blank">W3Layouts</a></p>
-                </div>
-                <div class="col-lg-6 copyright pr-0 pt-4 mt-4">
-                    <ul class="social">
-                        <li class="mr-3"><span class="fab mr-1 fa-facebook-f" aria-hidden="true"></span>Facebook</li>
-                        <li class="mr-3"><span class="fab mr-1 fa-twitter" aria-hidden="true"></span>Twitter</li>
-                        <li class="mr-3"><span class="fab mr-1 fa-linkedin" aria-hidden="true"></span>Linkedin</li>
-                        <li class=""><span class="fab mr-1 fa-google-plus" aria-hidden="true"></span>Google-plus</li>
-                    </ul>
-                </div>
-                <!-- //copyright -->
+			<!-- copyright -->
+			<div class="col-lg-6 copyleft pl-0 pt-4 mt-4">
+				<p>© 2018 Employment Hub. All Rights Reserved | Design by <a href="https://127.0.0.1:8000/" target="_blank">Employment Hub</a></p>
+			</div>
+			<div class="col-lg-6 copyright pr-0 pt-4 mt-4">
+				<ul class="social">
+					<li class="mr-3"><span class="fab mr-1 fa-facebook-f" aria-hidden="true"></span>Facebook</li>
+					<li class="mr-3"><span class="fab mr-1 fa-twitter" aria-hidden="true"></span>Twitter</li>
+					<li class="mr-3"><span class="fab mr-1 fa-linkedin" aria-hidden="true"></span>Linkedin</li>
+					<li class=""><span class="fab mr-1 fa-google-plus" aria-hidden="true"></span>Google-plus</li>
+				</ul>
+			</div>
+			<!-- //copyright -->
 
-            </div>
-        </div>
-    </footer>
+		</div>
+	</div>
+</footer>
     <!-- footer -->
 
     <!-- Vertically centered Modal -->

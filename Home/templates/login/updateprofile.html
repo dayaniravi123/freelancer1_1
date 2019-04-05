@@ -1,7 +1,7 @@
 <html>
     <head>
         {% load static %}
-        <title>Freelancer-SignUp</title>
+        <title>Employment Hub</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{% static 'updateprofile.css' %}" />
@@ -27,7 +27,42 @@
         <!--web font-->
         <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
         <!--//web font-->
+            <style>
+        .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
     </head>
 
     <body bgcolor="#b2c1c4">
@@ -64,80 +99,93 @@
         <header>
             <div class="container">
                 <!-- nav -->
-                <nav class="navbar navbar-expand-lg navbar-light py-4 bg-dark">
-                    <!-- logo -->
-                    <h1>
-                        <a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
-                            Web <span>Booster</span>
-                        </a>
-                    </h1>
-                    <!-- //logo -->
-                    <button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <!-- main nav -->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-lg-auto text-center">
-                            <li class="nav-item active mr-lg-2">
-                                <a class="nav-link" href="Home/home.html">Home
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                            </li>
-                            <li class="nav-item mr-lg-2">
-                                <a class="nav-link scroll" href="#welcome">Login</a>
-                            </li>
-                            <li class="nav-item mr-lg-2">
-                                <a class="nav-link scroll" href="#services">Sign up</a>
-                            </li>
-                            <li class="nav-item mr-2">
-                                <a class="nav-link scroll" href="#pricing">Post Project</a>
-                            </li>
-                            <li class="nav-item mr-2">
-                                <a class="nav-link scroll" href="#pricing">Browse job</a>
-                            </li>
-                            <li class="last">
-                                <a class="contact scroll" href="#contact">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- //main nav -->
-                </nav>
+                <nav class="navbar navbar-expand-lg navbar-light py-4">
+                <!-- logo -->
+                <h1>
+                    <a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
+                        Employment <span>Hub</span>
+                    </a>
+                </h1>
+                <!-- //logo -->
+                <button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- main nav -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-lg-auto text-center">
+                        <li class="nav-item active mr-lg-2">
+                            <a class="nav-link" href="/">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" href="/project/show">Browse job</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" href="#contact">Contact Us</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <div class="dropdown">
+                                <button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user"
+                                        style="font-size:30px;float:right;"></i></button>
+                                <div class="dropdown-content">
+                                    <a style="text-align:left;" href="/freelancer/updateprofile/">Edit Profile</a>
+                                    <a style="text-align:left;" href="/freelancer/viewprofile/">View Profile</a>
+                                    <a style="text-align:left;" href="/freelancer/getMoney/">Withdraw Money </a>
+                                    <a style="text-align:left;" href="/freelancer/uploadProject/">Upload Project</a>
+                                    <a style="text-align:left;" href="/freelancer/loggedin/">Back To Console</a>
+									<a style="text-align:left;" href="/freelancer/logout/">Log Out</a>
+
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <!-- //main nav -->
+            </nav>
                 <!-- //nav -->
             </div>
         </header>
+        <div class="banner">
+        <div class="banner-layer">
+
+        </div>
+        </div>
 		<div class="loginbox">
 
-        	<form action="/freelancer/profileUpdation/" style="padding-top:50px;" method="post" enctype="multipart/form-data" >
+        	<form action="/freelancer/profileUpdation/" style="position:absolute;top:12%;left:22%;" method="post" enctype="multipart/form-data" >
 				{%csrf_token%}
 				<div class="row">
 				<div class="col-sm-6">
-				<p><label for="username">user name : </label></p>
-    	        <input type="text" name="uname" placeholder="user name" id="username">
-        	    <p><label for="emailId">Email Id : </label></p>
-    	        <input type="email" id="emailId" name="email" placeholder="Email Id">
-				<p><label for="Password">Password : </label></p>
-				<input type="password" id="Password" name="pass1" placeholder="Password">
-				<p><label for="mobileNo">Mobile No : </label></p>
-				<input type="number" name="mobile" id="mobileNo" placeholder="mobile">
-				<p><label for="address">Address : </label></p>
-				<textarea name="description" id="address" placeholder="Descriptions"></textarea>
-				<p><label for="skill">Skills : </label></p>
-				<input type="text" id="skill" name="skills" placeholder="Skills">
+				<p><label style="color:blanchedalmond" for="username">user name : </label></p>
+    	        <input type="text" style="color:blanchedalmond;font-weight: 419;" name="uname" placeholder="user name" id="username">
+        	    <p><label style="color:blanchedalmond" for="emailId">Email Id : </label></p>
+    	        <input type="email" style="color:blanchedalmond;font-weight: 419;"  id="emailId" name="email" placeholder="Email Id">
+				<p><label style="color:blanchedalmond" for="Password">Password : </label></p>
+				<input type="password"  style="color:blanchedalmond;font-weight: 419;" id="Password" name="pass1" placeholder="Password">
+				<p><label style="color:blanchedalmond"  for="mobileNo">Mobile No : </label></p>
+				<input type="number"  style="color:blanchedalmond;font-weight: 419;" name="mobile" id="mobileNo" placeholder="mobile">
+				<p><label style="color:blanchedalmond"  for="address">Address : </label></p>
+				<textarea name="description" style="margin-bottom:10px;color:blanchedalmond;font-weight: 419;" id="address" placeholder="Descriptions"></textarea>
+				<p><label style="color:blanchedalmond"  for="skill">Skills : </label></p>
+				<input type="text" style="color:blanchedalmond;font-weight: 419;"  id="skill" name="skills" placeholder="Skills">
 				</div>
 				<div class="col-sm-6">
-				<p><label for="qualification">Qualification : </label></p>
-				<input type="text" id="qualification" name="qualification" placeholder="qualification">
-				<p><label for="experience">Experience : </label></p>
-				<input type="text" id="experience" name="exper" placeholder="Experience">
-				<p><label for="education">Education : </label></p>
-				<input type="text" id="education" name="education" placeholder="Education">
-				<p><label for="certificate">Certificate : </label></p>
-				<input type="file" id="certificate" name="file" placeholder="certificate">
-				<p><label for="photo">Profile Photo : </label></p>
-				<input type="file" id="photo" name="photo" placeholder="profile photo">
-                <p><label for="paytm">Paytm Link: </label></p>
-				<input type="text" id="paytm" name="paytm" placeholder="Paytm Link">
+				<p><label style="color:blanchedalmond"  for="qualification">Qualification : </label></p>
+				<input type="text" style="color:blanchedalmond;font-weight: 419;"  id="qualification" name="qualification" placeholder="qualification">
+				<p><label style="color:blanchedalmond"  for="experience">Experience : </label></p>
+				<input type="text" style="color:blanchedalmond;font-weight: 419;"  id="experience" name="exper" placeholder="Experience">
+				<p><label style="color:blanchedalmond"  for="education">Education : </label></p>
+				<input type="text"  style="color:blanchedalmond;font-weight: 419;" id="education" name="education" placeholder="Education">
+				<p><label style="color:blanchedalmond"  for="certificate">Certificate : </label></p>
+				<input type="file" style="color:blanchedalmond;font-weight: 419;"  id="certificate" name="file" placeholder="certificate">
+				<p><label style="color:blanchedalmond"  for="photo">Profile Photo : </label></p>
+				<input type="file" style="color:blanchedalmond;font-weight: 419;"  id="photo" name="photo" placeholder="profile photo">
+                <p><label  style="color:blanchedalmond" for="paytm">Paytm Link: </label></p>
+				<input type="text"  style="color:blanchedalmond;font-weight: 419;" id="paytm" name="paytm" placeholder="Paytm Link">
 				</div>
 				</div>
 				<input type="submit" value="update"/><br>

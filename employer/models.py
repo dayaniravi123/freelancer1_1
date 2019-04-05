@@ -5,6 +5,7 @@ class employers(models.Model):
     Password=models.CharField(max_length=50)
     MobileNumber=models.IntegerField(max_length=10)
     EmailId=models.EmailField(max_length=254)
+    Money=models.IntegerField(default=0)
 
 class project(models.Model):
    projectName=models.CharField(max_length=50)
@@ -39,6 +40,7 @@ class freelancer(models.Model):
     bids=models.IntegerField()
     paytmLink=models.CharField(default='none',max_length=50)
     numberOfProject=models.IntegerField(default=0)
+    Money = models.IntegerField(default=0)
 
 class freelancerTeam(models.Model):
     memberName=models.CharField(max_length=50)

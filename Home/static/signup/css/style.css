@@ -103,7 +103,7 @@ label.control-label {
     padding: 30px 40px;
     border: 5px solid rgba(95, 78, 78, 0.3);
 }
-input#firstname,input#lastname,input#inputEmail,input#Phone,input#inputPassword,input#inputPasswordConfirm {
+input#firstname,input#lastname,input#inputEmail,input#Phone,input#inputPassword,input#inputPasswordConfirm,#inputskill {
 	border-radius:0;
 	-webkit-border-radius:0;
 	-moz-border-radius:0;

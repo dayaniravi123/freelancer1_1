@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Freelancer</title>
+<title>Employment Hub</title>
 {% load static %}
 <link rel="shortcut icon" href="{% static 'logo1.jpg'%}" sizes="16x16" type="image/jpg">
 
@@ -20,18 +20,6 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-	<!--// Meta tag Keywords -->
-    <script type="text/javascript">
-    	function add_chatinline()
-    	{
-    		var hccid=51196150;
-    		var nt=document.createElement("script");
-    		nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;
-    		var ct=document.getElementsByTagName("script")[0];
-    		ct.parentNode.insertBefore(nt,ct);
-    	}
-		add_chatinline();
-	</script>
 	<!-- css files -->
 	<link rel="stylesheet" href="{% static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
 	<link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
@@ -44,6 +32,42 @@
 	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
 	<!--//web font-->
 
+	<style>
+        .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
 </head>
 
 <body>
@@ -56,7 +80,7 @@
 			<!-- logo -->
 			<h1>
 				<a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
-					Web <span>Booster</span>
+					Employment <span>Hub</span>
 				</a>
 			</h1>
 			<!-- //logo -->
@@ -72,21 +96,28 @@
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
-					<li class="nav-item mr-lg-2">
-						<a class="nav-link" href="/freelancer/login">Login</a>
-					</li>
-					<li class="nav-item mr-lg-2">
-						<a class="nav-link" href="/freelancer/signup">Sign up</a>
-					</li>
-					<li class="nav-item mr-2">
-						<a class="nav-link " href="/employer/projectSubmit">Post Project</a>
-					</li>
 					<li class="nav-item mr-2">
 						<a class="nav-link" href="/project/show">Browse job</a>
 					</li>
-					<li class="last">
-						<a class="contact scroll" href="#contact">Contact Us</a>
+					<li class="nav-item mr-2">
+						<a class="nav-link" href="#contact">Contact Us</a>
 					</li>
+					<li class="nav-item mr-2">
+                            <div class="dropdown">
+                                <button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user"
+                                        style="font-size:30px;float:right;"></i></button>
+                                <div class="dropdown-content">
+                                    <a style="text-align:left;" href="/freelancer/updateprofile/">Edit Profile</a>
+                                    <a style="text-align:left;" href="/freelancer/viewprofile/">View Profile</a>
+                                    <a style="text-align:left;" href="/freelancer/getMoney/">Withdraw Money </a>
+                                    <a style="text-align:left;" href="/freelancer/uploadProject/">Upload Project</a>
+                                    <a style="text-align:left;" href="/freelancer/loggedin/">Back To Console</a>
+									<a style="text-align:left;" href="/freelancer/logout/">Log Out</a>
+
+                                </div>
+                            </div>
+
+                        </li>
 				</ul>
 			</div>
 			<!-- //main nav -->
@@ -121,7 +152,7 @@
 							<p>100 Bids</p>
 
 						</div>
-						<a href="#">Select </a>
+						<a href="/freelancer/premierMembership/">Select </a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-sm-6 mt-sm-0 mt-5">
@@ -132,7 +163,7 @@
 							<p>45 Bids</p>
 
 						</div>
-						<a href="#">Select </a>
+						<a href="/freelancer/professionalMembership/">Select </a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-sm-6 mt-lg-0 mt-5">
@@ -143,7 +174,7 @@
 							<p>10 Bids</p>
 
 						</div>
-						<a href="#">Select </a>
+						<a href="/freelancer/basicMembership/">Select </a>
 					</div>
 				</div>
 				

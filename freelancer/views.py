@@ -1,4 +1,9 @@
+import json
 import random
+
+#import firebase as firebase
+from firebase import firebase
+#from firebase.firebase import FirebaseApplication
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage, send_mail
 from django.shortcuts import render_to_response, render
@@ -45,7 +50,7 @@ def registered(request):
     c.update(csrf(request))
     otp=random.randint(0,100000)
     subject = "Please Don't Share OTP"
-    message = "\n\nYour OTP is "+str(otp)+".\n\n-Exam Hub.\n"
+    message = "\n\nYour OTP is "+str(otp)+".\n\n-Employment Hub.\n"
     # from_email = settings.EMAIL_HOST_USER
     request.session["otp"]=str(otp)
     to_list = [request.session["email"]]
@@ -163,6 +168,11 @@ def placeBid(request,id):
     c.update(csrf(request))
     pro=[]
     pro.append(project.objects.get(id=id))
+    fBid = freelancer.objects.get(freelancerName=request.session['fname']).bids
+    #print(str(fBid))
+    if fBid <= 0:
+        return render_to_response('login/bidPlans.html')
+
     request.session['proj']=id
     return render(request,'login/placeBid.html',{"pro":pro},c)
 
@@ -182,7 +192,7 @@ def addBid(request):
     b.save()
     pro.save()
     fre.save()
-    return HttpResponseRedirect('/Home/display')
+    return HttpResponseRedirect('/freelancer/loggedin/')
 
 def updateTeam(request,id):
     c = {}
@@ -235,11 +245,124 @@ def projectUpdation(request):
             #f.certificate = request.FILES['file'].name
     return render_to_response('login/loggedin.html')
 
-def chatInitiated(request):
-    c={}
+def premierMembership(request):
+    f=freelancer.objects.get(freelancerName=request.session['fname'])
+    bids=int(f.bids)+100
+    f.bids=bids
+    f.save()
+    return HttpResponseRedirect('/freelancer/viewprofile/')
+
+def professionalMembership(request):
+    f=freelancer.objects.get(freelancerName=request.session['fname'])
+    bids=int(f.bids)+45
+    f.bids=bids
+    f.save()
+    return HttpResponseRedirect('/freelancer/viewprofile/')
+
+def basicMembership(request):
+    f=freelancer.objects.get(freelancerName=request.session['fname'])
+    bids=int(f.bids)+10
+    f.bids=bids
+    f.save()
+    return HttpResponseRedirect('/freelancer/viewprofile/')
+
+def chat(request):
+    c = {}
     c.update(csrf(request))
-    ch=chat.objects.all()
-    return render(request, 'login/chat.html',{"ch":ch},c)
+    #request.session['fname'] = 'devan'
+    f = firebase.FirebaseApplication('https://freelancer1-73000.firebaseio.com', None)
+    name = '/User/' + request.session['fname'] + '/'
+    #name = '/User/' + request.session['fname'] + '/'+request.session['rkey']+'/'
+    result = f.get(name, '')
+    if result is None:
+        result = {
+            'receiver': "",
+            'receiverMsg': "",
+            'sendMsg': ""
+        }
+    #print(str(result))
+    #print(str(result['receiveMsg']))
+    send = str(result['sendMsg'])
+    rec = str(result['receiveMsg'])
+    return render(request, 'login/chat.html', {"send": send, "rec": rec}, c)
+
+
+def chatInit(request):
+    ch = request.POST.get('username', '')
+
+    #send mail for chatting
+    subject ="Please Open chat Window"
+    message = "\n\n"+ch+" want to chat with you.\nPlease give reply. "+"-Employment Hub.\n"
+    frelanc=employers.objects.get(EmployerName=ch)
+    to_list = [frelanc.EmailId]
+    send_mail(subject, message, 'freelancerdjango@gmail.com', to_list)
+
+    #send message
+    f = firebase.FirebaseApplication('https://freelancer1-73000.firebaseio.com', None)
+    #name = '/User/' + ch + '/'
+    name = '/User/' + ch + '/'+request.session['skey']+'/'
+    result = f.get(name, '')
+    rec = str(result['sendMsg'])
+
+    send = request.POST.get('send', '')
+    data = {
+        'receiver': ch,
+        'receiverMsg': rec,
+        'sendMsg': send
+    }
+    tName = '/User/' + request.session['fname'] + '/'
+    result = f.post(tName, data)
+    print(result)
+    request.session['rkey']=str(result['name'])
+    tName = '/User/' + ch + '/'
+    data = {
+        'receiver': request.session['fname'],
+        'receiverMsg': send,
+        'sendMsg': ""
+    }
+    result1 = f.post(tName, data)
+    request.session['rkey1'] = str(result1['name'])
+    name = '/User/' + request.session['fname'] + '/'
+    result = f.get(name, '')
+    return render(request, 'login/chat.html', {"send": send, "rec": rec})
+
+def getMoney(request):
+    c = {}
+    c.update(csrf(request))
+    return render(request, 'login/getMoney.html', c)
+
+def withdraw(request):
+    c = {}
+    c.update(csrf(request))
+    name=request.POST.get('name','')
+    number = request.POST.get('number', '')
+    amount=request.POST.get('amount','')
+    request.session['amount']=int(amount)
+    otp = random.randint(0, 10000)
+    # f=freelancer.objects.get(freelancerName=request.session['tfname'])
+    f = freelancer.objects.get(freelancerName=request.session['fname'])
+    if int(f.Money) < int(amount):
+        return render_to_response('freelancer/failure.html')
+    subject = "Please Don't Share OTP"
+    message = "\n\nYour OTP is " + str(otp) + ".\n\n-Employment Hub.\n"
+    # from_email = settings.EMAIL_HOST_USER
+    request.session["emaotp"] = str(otp)
+    to_list = [f.emailId]
+    send_mail(subject, message, 'freelancerdjango@gmail.com', to_list)
+    return render_to_response('login/withdrawVarified.html', c)
+
+def withdrawSuccess(request):
+    otp = request.POST.get('otp', '')
+    votp = request.session['emaotp']
+    if otp == votp:
+        f = freelancer.objects.get(freelancerName=request.session['fname'])
+        Money = f.Money -int(request.session['amount'])
+        f.Money = Money
+        f.save()
+        return render_to_response('login/success.html')
+    else:
+        return render_to_response('login/failuer.html')
+
 
 def chatBeginning(request,id):
     c=chat.objects.get(id=id)

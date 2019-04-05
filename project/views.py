@@ -4,23 +4,29 @@ from django.template.context_processors import csrf
 from datetime import datetime
 
 def show(request):
-    r={}
+    r = {}
     r.update(csrf(request))
-    c=[]
-    c=project.objects.all()
-    b=[]
-    d=[]
-    b=bid.objects.all()
+    c = []
+    c = project.objects.all()
+    b = []
+    e = []
+    b = bid.objects.all()
     cDate = datetime.now()
     cDate = cDate.strftime('%Y-%m-%d')
 
     for pro in c:
-        proDate = datetime.strptime(pro.endDate, '%Y-%m-%d')
+        proDate = pro.endDate
+        proDate = datetime.strptime(proDate, '%Y-%m-%d')
+        m = proDate.month
+        y = proDate.year
+        d = proDate.day
+        proDate = datetime(y, m, d)
         proDate = proDate.strftime('%Y-%m-%d')
-        if proDate > cDate:
-            d.append(pro)
 
-    return render(request,'Project/project.html',{"c":d,"b":b},r)
+        if proDate > cDate:
+            e.append(pro)
+
+    return render(request, 'Project/project.html', {"c": e, "b": b}, r)
 
 def showProj(request):
     budget=request.POST.getlist('check')

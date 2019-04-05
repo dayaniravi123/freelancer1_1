@@ -20,12 +20,21 @@
 	</script>
 	<!--// Meta tag Keywords -->
     <!-- css files -->
-	<link rel="stylesheet" href="{% static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
-	<link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
-	<link rel="stylesheet" href="{% static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
+
+	<link href="{%static 'signup/css/bootstrap.css'%}" rel="stylesheet" type='text/css' media="all" />
+	<link href="{%static 'signup/css/style.css'%}" rel="stylesheet" type='text/css' media="all" />
+	<script src="{%static 'signup/js/jquery-1.10.2.min.js'%}"></script>
+	<script src="{%static 'signup/js/bootstrap.min.js'%}"></script>
+	<script src="{%static 'signup/js/validator.min.js'%}"></script>
+
+
+	<!-- css files -->
+	<link rel="stylesheet" href="{%static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="{%static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+	<link rel="stylesheet" href="{%static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
 	<!-- //css files -->
 
-	<link rel="stylesheet" href="{% static 'css/flexslider.css'%}" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{%static 'css/flexslider.css'%}" type="text/css" media="screen" />
 
 	<!--web font-->
 	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
@@ -59,21 +68,25 @@
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
-					<li class="nav-item mr-lg-2">
-						<a class="nav-link scroll" href="#welcome">Login</a>
-					</li>
-					<li class="nav-item mr-lg-2">
-						<a class="nav-link scroll" href="#services">Sign up</a>
-					</li>
 					<li class="nav-item mr-2">
 						<a class="nav-link scroll" href="/Home/project.html">Post Project</a>
 					</li>
 					<li class="nav-item mr-2">
-						<a class="nav-link scroll" href="#pricing">Browse job</a>
+						<a class="nav-link scroll" href="#contact">Contact Us</a>
 					</li>
-					<li class="last">
-						<a class="contact scroll" href="#contact">Contact Us</a>
-					</li>
+					<li class="nav-item mr-2">
+							<div class="dropdown">
+									<button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user" style="font-size:30px;float:right;"></i></button>
+									<div class="dropdown-content">
+										<a style="text-align:left;"  href="#">Edit Profile</a>
+										<a style="text-align:left;"  href="/employer/logout/">Log Out</a>
+										<a style="text-align:left;"  href="/employer/addMoney/">Deposite Money</a>
+										<a style="text-align:left;"  href="/employer/getMoney/">Withdraw Money</a>
+										<a style="text-align:left;" href="/employer/loggedin/">Back To Console</a>
+									</div>
+								</div>
+
+						</li>
 				</ul>
 			</div>
 			<!-- //main nav -->

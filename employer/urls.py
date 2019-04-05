@@ -16,6 +16,16 @@ urlpatterns = [
     url(r'^projectSubmission/$',views.projectSubmission),
     url(r'^satisfy/$',views.satisfy),
     url(r'^downloadProject/([a-zA-Z ]*)/$',views.downloadProject),
-    url(r'^chatInitiated/$',views.chatInitiated),
-    url(r'^chatBeginning/$',views.chatBeginning),
+    url(r'^chat/$',views.chat),
+    url(r'^chatInit/$',views.chatInit),
+    url(r'^payment/(\d+)/$',views.payment),
+    url(r'^paymentProcess/$',views.paymentProcess),
+    url(r'^varified/$',views.varified),
+    url(r'^deposite/$', views.deposite),
+    url(r'^depositSuccess/$', views.depositSuccess),
+    url(r'^addMoney/$', views.addMoney),
+    url(r'^withdraw/$', views.withdraw),
+    url(r'^withdrawSuccess/$', views.withdrawSuccess),
+    url(r'^getMoney/$', views.getMoney),
+
 ]

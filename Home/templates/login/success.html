@@ -1,0 +1,241 @@
+<!--new code-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Employment Hub</title>
+	<!-- Meta tag Keywords -->
+	{%load static%}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Web Booster Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<!--// Meta tag Keywords -->
+
+
+	<link href="{%static 'signup/css/bootstrap.css'%}" rel="stylesheet" type='text/css' media="all" />
+	<link href="{%static 'signup/css/style.css'%}" rel="stylesheet" type='text/css' media="all" />
+	<script src="{%static 'signup/js/jquery-1.10.2.min.js'%}"></script>
+	<script src="{%static 'signup/js/bootstrap.min.js'%}"></script>
+	<script src="{%static 'signup/js/validator.min.js'%}"></script>
+
+
+	<!-- css files -->
+	<link rel="stylesheet" href="{%static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="{%static 'css/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+	<link rel="stylesheet" href="{%static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+
+	<link rel="stylesheet" href="{%static 'css/flexslider.css'%}" type="text/css" media="screen" />
+
+	<!--web font-->
+	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<!--//web font-->
+<style>
+        .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+</head>
+
+<body>
+
+
+	<header>
+		<div class="container">
+			<!-- nav -->
+			<nav class="navbar navbar-expand-lg navbar-light py-4">
+				<!-- logo -->
+				<h1>
+					<a class="navbar-brand" href="/"> <i class="fas fa-globe"></i>
+						Employment <span>Hub</span>
+					</a>
+				</h1>
+				<!-- //logo -->
+				<button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- main nav -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-lg-auto text-center">
+						<li class="nav-item active mr-lg-2">
+							<a class="nav-link" href="/">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item mr-2">
+							<a class="nav-link" href="/project/show">Browse job</a>
+						</li>
+						<li class="nav-item mr-2">
+							<a class="nav-link" href="#contact">Contact Us</a>
+						</li>
+
+						<li class="nav-item mr-2">
+                            <div class="dropdown">
+                                <button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user"
+                                        style="font-size:30px;float:right;"></i></button>
+                                <div class="dropdown-content">
+                                    <a style="text-align:left;" href="/freelancer/updateprofile/">Edit Profile</a>
+                                    <a style="text-align:left;" href="/freelancer/viewprofile/">View Profile</a>
+                                    <a style="text-align:left;" href="/freelancer/getMoney/">Withdraw Money </a>
+                                    <a style="text-align:left;" href="/freelancer/uploadProject/">Upload Project</a>
+                                    <a style="text-align:left;" href="/freelancer/loggedin/">Back To Console</a>
+									<a style="text-align:left;" href="/freelancer/logout/">Log Out</a>
+
+                                </div>
+                            </div>
+
+                        </li>
+					</ul>
+				</div>
+				<!-- //main nav -->
+			</nav>
+			<!-- //nav -->
+		</div>
+	</header>
+
+<!-- banner -->
+<div class="banner">
+	<div class="banner-layer">
+
+	</div>
+</div>
+<!-- //banner -->
+
+<!--project details-->
+
+	<div class="content-agileits" style="position: absolute;top:20%;left:28%;">
+	        <div class="form-group w3layouts w3 w3l">
+				<label for="firstname" class="control-label">Payment is Done Successfully</label>
+            </div>
+            <a href="/freelancer/loggedin/">Back to Console</a>
+    </div>
+
+
+<!--//project-->
+<!-- about -->
+<!-- //contact -->
+
+<!-- footer -->
+<!-- footer -->
+
+	<!-- Vertically centered Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title text-capitalize text-center" id="exampleModalLongTitle"><span class="fas fa-globe"></span> Web <span class="logo">Booster</span></h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<img src="images/banner1.jpg" class="img-fluid mb-3" alt="Modal Image" />
+			Vivamus eget est in odio tempor interdum. Mauris maximus in fermentum arcu, ac finibus ante. Sed mattis risus at ipsum at elementum, ut auctor turpis cursus. Sed sed odio pharetra, aliquet velit cursus, vehicula enim. Mauris porta aliquet sed magnain, eget laoreet ligula. mollit anim id est laborum.
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary">Save changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- //Vertically centered Modal -->
+
+	<!-- js -->
+	<!-- //js -->
+
+	<!-- banner-type-text -->
+		<script src="js/typed.js" type="text/javascript"></script>
+		<script>
+			$(function(){
+
+				$("#typed").typed({
+					// strings: ["Typed.js is a <strong>jQuery</strong> plugin.", "It <em>types</em> out sentences.", "And then deletes them.", "Try it out!"],
+					stringsElement: $('#typed-strings'),
+					typeSpeed: 30,
+					backDelay: 500,
+					loop: false,
+					contentType: 'html', // or text
+					// defaults to false for infinite loop
+					loopCount: false,
+					callback: function(){ foo(); },
+					resetCallback: function() { newTyped(); }
+				});
+
+				$(".reset").click(function(){
+					$("#typed").typed('reset');
+				});
+
+			});
+
+			function newTyped(){ /* A new typed object */ }
+
+			function foo(){ console.log("Callback"); }
+		</script>
+	<!-- //banner-type-text -->
+
+	<!-- Stats-Number-Scroller-Animation-JavaScript -->
+	<script src="js/waypoints.min.js"></script>
+	<script src="js/counterup.min.js"></script>
+	<script>
+		jQuery(document).ready(function( $ ) {
+			$('.counter').counterUp({
+				delay: 10,
+				time: 1000
+			});
+		});
+	</script>
+	<!-- //Stats-Number-Scroller-Animation-JavaScript -->
+
+	<!-- flexslider --><!-- for testimonials -->
+	<script defer src="js/jquery.flexslider.js"></script>
+	<!--Start-slider-script-->
+		<script type="text/javascript">
+
+		$(window).load(function(){
+		  $('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			  $('body').removeClass('loading');
+			}
+		  });
+		});
+	  </script>
+	<!--End-slider-script-->
+	<!-- //flexslider --><!-- //for testimonials -->
+
+
+</body>
+</html>

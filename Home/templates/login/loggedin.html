@@ -3,35 +3,47 @@
 <html lang="en">
 
 <head>
-	<title>Freelancer</title>
-	<!-- Meta tag Keywords -->
-	{%load static%}
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
-	<meta name="keywords" content="Web Booster Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+    <title>Employment Hub</title>
+    <!-- Meta tag Keywords -->
+    {%load static%}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Web Booster Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-	<!--// Meta tag Keywords -->
+    <!--// Meta tag Keywords -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBC33HuodpM22jxWpRw7MwWoUd1C_T8rMo",
+    authDomain: "freelancer1-73000.firebaseapp.com",
+    databaseURL: "https://freelancer1-73000.firebaseio.com",
+    projectId: "freelancer1-73000",
+    storageBucket: "freelancer1-73000.appspot.com",
+    messagingSenderId: "532256076679"
+  };
+  firebase.initializeApp(config);
+</script>
 
 
 
+    <!-- css files -->
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="{%static 'employer/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
+    <link rel="stylesheet" href="{%static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
 
-	<!-- css files -->
-	<link rel="stylesheet" href="{%static 'css/bootstrap.css'%}"> <!-- Bootstrap-Core-CSS -->
-	<link rel="stylesheet" href="{%static 'employer/style.css'%}" type="text/css" media="all" /> <!-- Style-CSS -->
-	<link rel="stylesheet" href="{%static 'css/fontawesome-all.css'%}"> <!-- Font-Awesome-Icons-CSS -->
-	<!-- //css files -->
+    <link rel="stylesheet" href="{%static 'css/flexslider.css'%}" type="text/css" media="screen" />
 
-	<link rel="stylesheet" href="{%static 'css/flexslider.css'%}" type="text/css" media="screen" />
+    <link href="{%static 'signup/css/bootstrap.css'%}" rel="stylesheet" type='text/css' media="all" />
+    <link href="{%static 'employer/style.css'%}" rel="stylesheet" type='text/css' media="all" />
+    <script src="{%static 'signup/js/jquery-1.10.2.min.js'%}"></script>
+    <script src="{%static 'signup/js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'signup/js/validator.min.js'%}"></script>
 
-	<link href="{%static 'signup/css/bootstrap.css'%}" rel="stylesheet" type='text/css' media="all" />
-	<link href="{%static 'employer/style.css'%}" rel="stylesheet" type='text/css' media="all" />
-	<script src="{%static 'signup/js/jquery-1.10.2.min.js'%}"></script>
-	<script src="{%static 'signup/js/bootstrap.min.js'%}"></script>
-	<script src="{%static 'signup/js/validator.min.js'%}"></script>
-
-	<!--web font-->
-	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80 0,800i,900,900i&amp;subset=latin-ext"
-	 rel="stylesheet">
+    <!--web font-->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80 0,800i,900,900i&amp;subset=latin-ext"
+        rel="stylesheet">
 
     <style>
         .dropbtn {
@@ -69,107 +81,107 @@
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
     </style>
-	<!--//web font-->
+    <!--//web font-->
 </head>
 
 <body>
 
 
-	<header>
-		<div class="container">
-			<!-- nav -->
-			<nav class="navbar navbar-expand-lg navbar-light py-4">
-				<!-- logo -->
-				<h1>
-					<a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
-						Web <span>Booster</span>
-					</a>
-				</h1>
-				<!-- //logo -->
-				<button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<!-- main nav -->
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ml-lg-auto text-center">
-						<li class="nav-item active mr-lg-2">
-							<a class="nav-link" href="/">Home
-								<span class="sr-only">(current)</span>
-							</a>
-						</li>
-						<li class="nav-item mr-2">
-							<a class="nav-link " href="/employer/projectSubmit">Post Project</a>
-						</li>
+    <header>
+        <div class="container">
+            <!-- nav -->
+            <nav class="navbar navbar-expand-lg navbar-light py-4">
+                <!-- logo -->
+                <h1>
+                    <a class="navbar-brand" href="Home/home.html"> <i class="fas fa-globe"></i>
+                        Employment <span>Hub</span>
+                    </a>
+                </h1>
+                <!-- //logo -->
+                <button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- main nav -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-lg-auto text-center">
+                        <li class="nav-item active mr-lg-2">
+                            <a class="nav-link" href="/">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
 
-						<li class="nav-item mr-2">
-							<a class="nav-link" href="/project/show">Browse job</a>
-						</li>
-						<li class="nav-item mr-2">
-							<a class="nav-link" href="#contact">Contact Us</a>
-						</li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" href="/project/show">Browse job</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" href="#contact">Contact Us</a>
+                        </li>
 
-						<li class="nav-item mr-2">
-							<div class="dropdown">
+                        <li class="nav-item mr-2">
+								<div class="dropdown">
 									<button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user" style="font-size:30px;float:right;"></i></button>
 									<div class="dropdown-content">
-										<a href="/freelancer/updateprofile/">Edit Profile</a>
-										<a href="/freelancer/viewprofile/">View Profile</a>
+										<a style="text-align:left;"  href="/freelancer/updateProfile/">Edit Profile</a>
+										<a style="text-align:left;"  href="/freelancer/profile/">View Profile</a>
+                                        <a style="text-align:left;" href="/freelancer/uploadProject/">Upload Project</a>
 
-										<a href="/freelancer/uploadProject/">upload project</a>
-                                        <a href="/freelancer/logout/">Log Out</a>
+                                        <a style="text-align:left;"  href="/freelancer/getMoney/">Withdraw Money</a>
+                                        <a style="text-align:left;"  href="/freelancer/logout/">Log Out</a>
 
 									</div>
-							</div>
+								</div>
 
 						</li>
-					</ul>
-				</div>
-				<!-- //main nav -->
-			</nav>
-			<!-- //nav -->
-		</div>
-	</header>
+                    </ul>
+                </div>
+                <!-- //main nav -->
+            </nav>
+            <!-- //nav -->
+        </div>
+    </header>
 
-	<!-- banner -->
-	<div class="banner" style="height:500px;">
-		<div class="banner-layer" style="height:500px;">
+    <!-- banner -->
+    <div class="banner" style="height:500px;">
+        <div class="banner-layer" style="height:500px;">
+            <p style="position: absolute;top: 36%;left: 10%;font-size: 37px;color: blanchedalmond;">Find Best Freelance Jobs</p>
+            <a class="btn btn-primary" href="/project/show" style="position: absolute;top: 50%;left: 10%;color: blanchedalmond;background-color: #276eab;font-size:23px;width:170px;">Browse Jobs</a>
+            <a class="btn btn-primary" href="/freelancer/chat/" style="position: absolute;top: 50%;left: 28%;color: blanchedalmond;background-color: #276eab;font-size:23px;width:170px;">Chat</a>
 
-		</div>
-	</div>
-	<div class="container">
+        </div>
+    </div>
+    <div class="container">
 
-		<p style="font-size:30px;font-weight:bold;padding-top:20px;">List of Project</p>
-		{% for p in a %}
-			{% if p.id is None%}
-				<h3>No Projects</h3>
-			{%else%}
-				<div class="card" style="padding-bottom: 15px;margin-bottom: 25px;margin-top: 25px;">
-  					<div class="card-header">
-    					{{p.projectName}}
-  					</div>
-  					<div class="card-body">
-    					<p class="card-text" style="margin-bottom:10px;">{{p.description}}</p>
-    					<p  style="margin-bottom:10px;"><span style="font-weight:bold;"> Project Status:</span> {{p.status}}</p>
+        <p style="font-size:30px;font-weight:bold;padding-top:20px;">List of Project</p>
+        {% for p in a %}
+        {% if p.id is None%}
+        <h3>No Projects</h3>
+        {%else%}
+        <div class="card" style="padding-bottom: 15px;margin-bottom: 25px;margin-top: 25px;">
+            <div class="card-header">
+                {{p.projectName}}
+            </div>
+            <div class="card-body">
+                <p class="card-text" style="margin-bottom:10px;">{{p.description}}</p>
+                <p style="margin-bottom:10px;"><span style="font-weight:bold;"> Project Status:</span> {{p.status}}</p>
 
-					</div>
-				</div>
-			{%endif%}
-		{%endfor%}
-	</div>
+            </div>
+        </div>
+        {%endif%}
+        {%endfor%}
+    </div>
     <div class="container">
         <h3>Team Member</h3>
         <ul class="list-group">
-					{%for f in freTeam%}
+            {%for f in freTeam%}
 
-					<li class="list-group-item">
-							Name:={{f.memberName}}<br>
-							Experience:={{f.experience}}<br>
-							Mobile Number:={{f.mobileNo}}<br>
-							<a href="/freelancer/updateTeam/{{f.id}}/">Update Team</a>
-					</li>
-
-					{%endfor%}
+            <li class="list-group-item">
+                Name:={{f.memberName}}<br>
+                Experience:={{f.experience}}<br>
+                Mobile Number:={{f.mobileNo}}<br>
+                <a href="/freelancer/updateTeam/{{f.id}}/">Update Team</a>
+            </li>
+            {%endfor%}
         </ul>
     </div>
 </body>
