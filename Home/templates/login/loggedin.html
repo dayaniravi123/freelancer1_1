@@ -123,7 +123,7 @@
 									<button class="dropbtn" style="background-color:cadetblue;"><i class="fas fa-user" style="font-size:30px;float:right;"></i></button>
 									<div class="dropdown-content">
 										<a style="text-align:left;"  href="/freelancer/updateProfile/">Edit Profile</a>
-										<a style="text-align:left;"  href="/freelancer/profile/">View Profile</a>
+										<a style="text-align:left;"  href="/freelancer/viewprofile/">View Profile</a>
                                         <a style="text-align:left;" href="/freelancer/uploadProject/">Upload Project</a>
 
                                         <a style="text-align:left;"  href="/freelancer/getMoney/">Withdraw Money</a>
@@ -179,10 +179,11 @@
                 Name:={{f.memberName}}<br>
                 Experience:={{f.experience}}<br>
                 Mobile Number:={{f.mobileNo}}<br>
-                <a href="/freelancer/updateTeam/{{f.id}}/">Update Team</a>
+                <a class="btn btn-primary" href="/freelancer/updateTeam/{{f.id}}/">Update Team</a>
             </li>
             {%endfor%}
         </ul>
+        <a class="btn btn-primary" href="/freelancer/addTeam/">Add Team Member</a>
     </div>
 </body>
 

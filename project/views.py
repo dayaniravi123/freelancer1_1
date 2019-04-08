@@ -1,5 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
-from employer.models import project, bid,freelancer
+from employer.models import project, bid, freelancer, employers
 from django.template.context_processors import csrf
 from datetime import datetime
 
@@ -26,7 +27,15 @@ def show(request):
         if proDate > cDate:
             e.append(pro)
 
-    return render(request, 'Project/project.html', {"c": e, "b": b}, r)
+    try:
+        f = freelancer.objects.get(freelancerName=request.session['fname'])
+        return render(request, 'Project/projectFreelancer.html', {"c": e, "b": b}, r)
+    except Exception:
+        try:
+            emp = employers.objects.get(EmployerName=request.session['ename'])
+            return render(request, 'Project/projectEmployer.html', {"c": e, "b": b}, r)
+        except:
+            return render(request, 'Project/project.html', {"c": e, "b": b}, r)
 
 def showProj(request):
     budget=request.POST.getlist('check')
@@ -89,6 +98,6 @@ def selectFreelancer(request,id):
     fre.numberOfProject=num_proj
     fre.save()
     proj.save()
-    return render_to_response('Employer/loggedin.html')
+    return HttpResponseRedirect('/employer/loggedin/')
 
 

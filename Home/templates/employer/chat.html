@@ -100,7 +100,10 @@
                         <li class="nav-item mr-2">
 							<a class="nav-link " href="/employer/projectSubmit">Post Project</a>
 						</li>
-						 <li class="nav-item mr-2">
+						<li class="nav-item mr-2">
+                            <a class="nav-link" href="/employer/cancelChat/">End Chat</a>
+                        </li>
+					<li class="nav-item mr-2">
                             <a class="nav-link" href="#contact">Contact Us</a>
                         </li>
 
@@ -137,16 +140,17 @@
 	<div class="content-agileits" style="position: absolute;top:20%;left:28%;">
 		<form action="/employer/chatInit/" method="post" data-toggle="validator" role="form">
 			{% csrf_token %}
+			{% ifequal act ack %}
 			<div class="form-group w3layouts w3 w3l">
 				<label for="firstname" class="control-label">Receiver Name</label>
-				<input name="username" type="text" class="form-control" id="firstname" placeholder="Receiver Name" data-error="Enter Receiver Name" required>
+				<input name="username" type="text" value="{{recv}}" readonly class="form-control" id="firstname" placeholder="Receiver Name" data-error="Enter Receiver Name">
 				<div class="help-block with-errors"></div>
 			</div>
 			<div class="form-group w3layouts w3 w3l">
-				<input name="sender" type="text" style="width:50%;" value="{{send}}" class="form-control" readonly>
+				<input name="rec" type="text" style="width:80%;" value="{{rec}}" class="form-control" readonly>
 			</div>
 			<div class="form-group w3layouts w3 w3l">
-				<input name="rec" type="text" style="width:50%;float:right;margin-bottom:inherit;" value="{{rec}}" class="form-control" readonly>
+				<input name="sender" type="text" style="width:80%;float:right;margin-bottom:inherit;" value="{{send}}" class="form-control" readonly>
 			</div>
 			<div class="form-group w3layouts w3 w3l">
 				<input name="send" type="text" class="form-control" placeholder="Enter message" data-error="Enter message" required>
@@ -154,6 +158,15 @@
 			<div class="form-group">
 				<button type="submit" class="btn btn-lg">Send</button>
 			</div>
+			{% else %}
+			<div class="form-group w3layouts w3 w3l">
+				<label for="firstname" class="control-label">Wait For Receiver acceptance</label>
+				<input name="username" type="text" value="{{recv}}" readonly class="form-control" id="firstname" placeholder="Receiver Name" data-error="Enter Receiver Name">
+				<div class="help-block with-errors"></div>
+			</div>
+
+			{% endifequal %}
+
 		</form>
     </div>
 

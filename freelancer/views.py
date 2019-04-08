@@ -62,7 +62,7 @@ def varified(request):
     sOtp=request.session["otp"]
     if tOtp==sOtp:
         return HttpResponseRedirect('/freelancer/login/')
-    return render_to_response('employer/error.html')
+    return render_to_response('login/error.html',{"err":"Sorry OTP is Wrong"})
 
 def membership(request):
     return render_to_response('login/bidPlans.html')
@@ -194,6 +194,21 @@ def addBid(request):
     fre.save()
     return HttpResponseRedirect('/freelancer/loggedin/')
 
+def addTeam(request):
+    c = {}
+    c.update(csrf(request))
+    return render(request, 'login/addTeam.html', c)
+
+def memberAdd(request):
+    memberName = request.POST.get('mName')
+    experience = request.POST.get('mExpr')
+    mobileNo = request.POST.get('mMobile')
+    dept=request.POST.get('mDept')
+    fid=freelancer.objects.get(freelancerName=request.session['fname']).id
+    fre=freelancerTeam(memberName=memberName,experience=experience,mobileNo=mobileNo,freelancer_id=fid,dept=dept)
+    fre.save()
+    return HttpResponseRedirect('/freelancer/loggedin/')
+
 def updateTeam(request,id):
     c = {}
     c.update(csrf(request))
@@ -207,6 +222,7 @@ def teamUpdation(request):
     fre.memberName=request.POST.get('mName')
     fre.experience=request.POST.get('mExpr')
     fre.mobileNo=request.POST.get('mMobile')
+    fre.dept = request.POST.get('mDept')
     fre.save()
     return HttpResponseRedirect('/freelancer/loggedin/')
 
@@ -234,8 +250,11 @@ def uploadProject(request):
 
 def projectUpdation(request):
     f = freelancer.objects.get(freelancerName=request.session['fname'])
-    name=request.POST.get('pName','')
-    pro=project.objects.get(projectName=name)
+    name=request.POST.get('pname','')
+    try:
+        pro=project.objects.get(projectName=name)
+    except Exception:
+        return render_to_response('login/error.html',{"err":"Sorry Project is not available"})
     if (request.method == 'POST'):
         fre = freelancer(request.POST, request.FILES)
         if fre is not None:
@@ -243,7 +262,7 @@ def projectUpdation(request):
             pro.status='complete'
             pro.save()
             #f.certificate = request.FILES['file'].name
-    return render_to_response('login/loggedin.html')
+    return HttpResponseRedirect('/freelancer/loggedin/')
 
 def premierMembership(request):
     f=freelancer.objects.get(freelancerName=request.session['fname'])
@@ -269,10 +288,8 @@ def basicMembership(request):
 def chat(request):
     c = {}
     c.update(csrf(request))
-    #request.session['fname'] = 'devan'
     f = firebase.FirebaseApplication('https://freelancer1-73000.firebaseio.com', None)
     name = '/User/' + request.session['fname'] + '/'
-    #name = '/User/' + request.session['fname'] + '/'+request.session['rkey']+'/'
     result = f.get(name, '')
     if result is None:
         result = {
@@ -280,51 +297,78 @@ def chat(request):
             'receiverMsg': "",
             'sendMsg': ""
         }
-    #print(str(result))
-    #print(str(result['receiveMsg']))
+    # print(str(result))
+    # print(str(result['receiveMsg']))
+    req = str(result['request'])
     send = str(result['sendMsg'])
     rec = str(result['receiveMsg'])
-    return render(request, 'login/chat.html', {"send": send, "rec": rec}, c)
+    recv = str(result['receiver'])
+    #print(req)
+    ans = "n"
+    return render(request, 'login/chatBegin.html', {"recv": recv, "ans": ans, "req": req, "send": send, "rec": rec},c)
+
+
+def chatReq(request):
+    c={}
+    c.update(csrf(request))
+    f = firebase.FirebaseApplication('https://freelancer1-73000.firebaseio.com', None)
+    name = '/User/' + request.session['fname'] + '/'
+    result = f.get(name, '')
+    recv = str(result['receiver'])
+    f.put(name, "request", "done")
+    name1 = '/User/' + recv + '/'
+    re = f.get(name1, '')
+    f.put(name1, "request", "done")
+    f.put(name1,"Accept","Yes")
+    send = str(result['sendMsg'])
+    rec = str(result['receiveMsg'])
+    recv=str(result['receiver'])
+    accept=str(result['Accept'])
+    ack="Yes"
+    return render(request,'login/chat.html',{"act":accept,"ack":ack,"recv":recv,"send": send, "rec": rec},c)
 
 
 def chatInit(request):
-    ch = request.POST.get('username', '')
-
-    #send mail for chatting
-    subject ="Please Open chat Window"
-    message = "\n\n"+ch+" want to chat with you.\nPlease give reply. "+"-Employment Hub.\n"
-    frelanc=employers.objects.get(EmployerName=ch)
-    to_list = [frelanc.EmailId]
-    send_mail(subject, message, 'freelancerdjango@gmail.com', to_list)
-
-    #send message
+    c = {}
+    c.update(csrf(request))
     f = firebase.FirebaseApplication('https://freelancer1-73000.firebaseio.com', None)
-    #name = '/User/' + ch + '/'
-    name = '/User/' + ch + '/'+request.session['skey']+'/'
+    tName = '/User/' + request.session['fname'] + '/'
+    result = f.get(tName, '')
+    ch = str(result['receiver'])
+    name = '/User/' + ch + '/'
     result = f.get(name, '')
     rec = str(result['sendMsg'])
-
     send = request.POST.get('send', '')
-    data = {
-        'receiver': ch,
-        'receiverMsg': rec,
-        'sendMsg': send
-    }
+
     tName = '/User/' + request.session['fname'] + '/'
-    result = f.post(tName, data)
-    print(result)
-    request.session['rkey']=str(result['name'])
+    result = f.put(tName, "receiveMsg", str(rec))
+    result = f.put(tName, "sendMsg", str(send))
     tName = '/User/' + ch + '/'
-    data = {
-        'receiver': request.session['fname'],
-        'receiverMsg': send,
-        'sendMsg': ""
-    }
-    result1 = f.post(tName, data)
-    request.session['rkey1'] = str(result1['name'])
+    result1 = f.put(tName, "receiver", request.session['fname'])
+    result1 = f.put(tName, "receiveMsg", str(send))
     name = '/User/' + request.session['fname'] + '/'
     result = f.get(name, '')
-    return render(request, 'login/chat.html', {"send": send, "rec": rec})
+    # print(str(result))
+    # print(str(result['receiveMsg']))
+    send = str(result['sendMsg'])
+    rec = str(result['receiveMsg'])
+    if str(result['request'])=="n":
+        return HttpResponseRedirect('/freelancer/chat/')
+    return render(request, 'login/chat.html', {"send": send, "rec": rec}, c)
+
+def cancelChat(request):
+    f = firebase.FirebaseApplication('https://freelancer1-73000.firebaseio.com', None)
+    tName = '/User/' + request.session['fname'] + '/'
+    result = f.get(tName, '')
+    ch = str(result['receiver'])
+    rs=f.put(tName,"request","n")
+    rs=f.put(tName,"Accept","No")
+    tName = '/User/' + ch + '/'
+    result = f.get(tName, '')
+    rs=f.put(tName,"request","n")
+    rs=f.put(tName,"Accept","No")
+    return HttpResponseRedirect("/freelancer/loggedin/")
+
 
 def getMoney(request):
     c = {}

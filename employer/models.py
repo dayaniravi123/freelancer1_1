@@ -46,6 +46,7 @@ class freelancerTeam(models.Model):
     memberName=models.CharField(max_length=50)
     experience=models.IntegerField()
     mobileNo=models.IntegerField()
+    dept=models.CharField(default=" ",max_length=50)
     freelancer=models.ForeignKey(freelancer,on_delete=models.CASCADE)
 
 class bid(models.Model):
@@ -63,3 +64,9 @@ class chat(models.Model):
 class admin(models.Model):
     adminName=models.CharField(max_length=50)
     password=models.CharField(max_length=50)
+
+class Feedback(models.Model):
+    Name=models.CharField(max_length=50)
+    Subject=models.CharField(max_length=50)
+    Email=models.CharField(max_length=50)
+    Message=models.CharField(max_length=200)

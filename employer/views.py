@@ -18,6 +18,7 @@ from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from employer.models import employers,project,bid
 
+
 def signup(request):
     c = {}
     c.update(csrf(request))
@@ -140,13 +141,16 @@ def projectSubmission(request):
     bidN = 0
     p = project(projectName=projectName, description=description, files=file, skills=skills,typeOfProject=typeOfProject, price=price, payType=payType, bidNumber=bidN, startDate=sDate,endDate=eDate, EmpId_id=empy)
     p.save()
-    return render_to_response('employer/success.html')
+    return render_to_response('employer/success.html',{"succ":"Project is successfully posted."})
 
 
-def satisfy(request):
+def satisfy(request,id):
     emp = employers.objects.get(EmployerName=request.session['ename'])
     p = []
     p = project.objects.filter(EmpId_id=emp.id)
+    pro=project.objects.get(id=id)
+    pro.status="payment"
+    pro.save()
     c1 = {}
     c1.update(csrf(request))
     return render_to_response('employer/satisfy.html', {"full_name": request.session['ename'], "projectList": p}, c1)
@@ -177,39 +181,51 @@ def chat(request):
         }
     #print(str(result))
     #print(str(result['receiveMsg']))
+    req=str(result['request'])
     send=str(result['sendMsg'])
     rec=str(result['receiveMsg'])
-    return render(request,'employer/chat.html',{"send": send, "rec": rec},c)
+    recv=str(result['receiver'])
+    print(req)
+    ans="n"
+    return render(request,'employer/chatBegin.html',{"recv":recv,"ans":ans,"req":req,"send": send, "rec": rec},c)
 
+def chatReq(request):
+    c={}
+    c.update(csrf(request))
+    f = firebase.FirebaseApplication('https://freelancer1-73000.firebaseio.com', None)
+    name = '/User/' + request.session['ename'] + '/'
+    result = f.get(name, '')
+    recv = str(result['receiver'])
+    f.put(name,"request","done")
+    name1 = '/User/' + recv + '/'
+    re=f.get(name1,'')
+    f.put(name1,"request","done")
+    f.put(name1, "Accept", "Yes")
+    send = str(result['sendMsg'])
+    rec = str(result['receiveMsg'])
+    recv=str(result['receiver'])
+    accept=str(result['Accept'])
+    ack="Yes"
+    return render(request,'employer/chat.html',{"act":accept,"ack":ack,"recv":recv,"send": send, "rec": rec},c)
 
 def chatInit(request):
-    ch = request.POST.get('username', '')
-    # send mail for chatting
-    subject = "Please Open chat Window"
-    message = "\n\n" + ch + " want to chat with you.\nPlease give reply. " + "-Employment Hub.\n"
-    frelanc = freelancer.objects.get(freelancerName=ch)
-    to_list = [frelanc.emailId]
-    send_mail(subject, message, 'freelancerdjango@gmail.com', to_list)
-    # send message
-
-
+    c={}
+    c.update(csrf(request))
     f = firebase.FirebaseApplication('https://freelancer1-73000.firebaseio.com', None)
-    #name = '/User/' + ch + '/'
-    name='/User/'+ch+'/'+request.session['rkey']+'/'
+    tName = '/User/' + request.session['ename'] + '/'
+    result = f.get(tName, '')
+    ch=str(result['receiver'])
+    name = '/User/' + ch + '/'
     result=f.get(name ,'')
     rec = str(result['sendMsg'])
-
     send=request.POST.get('send','')
-    data = {
-        'receiver': ch,
-        'receiverMsg': rec,
-        'sendMsg':send
-    }
+
     tName='/User/'+request.session['ename']+'/'
-    result = f.post(tName, data)
-    print("result")
-    print("result is"+str(result['name']))
-    request.session['skey']=str(result['name'])
+    result = f.put(tName,"receiveMsg", str(rec))
+    result = f.put(tName,"sendMsg",str(send))
+    #print("result")
+    #print("result is"+str(result['name']))
+    #request.session['skey']=str(result['name'])
     #for receiver
     tName = '/User/' + ch + '/'
     data = {
@@ -217,14 +233,30 @@ def chatInit(request):
         'receiverMsg': send,
         'sendMsg':""
     }
-    result1 = f.post(tName, data)
+    result1 = f.put(tName, "receiver",request.session['ename'])
+    result1=f.put(tName,"receiveMsg",str(send))
     name = '/User/' + request.session['ename'] + '/'
     result = f.get(name, '')
     #print(str(result))
     #print(str(result['receiveMsg']))
-    #send = str(result['sendMsg'])
-    #rec = str(result['receiveMsg'])
-    return render(request, 'employer/chat.html', {"send": send, "rec": rec})
+    send = str(result['sendMsg'])
+    rec = str(result['receiveMsg'])
+    if str(result['request'])=="n":
+        return HttpResponseRedirect('/employer/chat/')
+    return render(request, 'employer/chat.html', {"send": send, "rec": rec},c)
+
+def cancelChat(request):
+    f = firebase.FirebaseApplication('https://freelancer1-73000.firebaseio.com', None)
+    tName = '/User/' + request.session['ename'] + '/'
+    result = f.get(tName, '')
+    ch = str(result['receiver'])
+    rs=f.put(tName,"request","n")
+    rs=f.put(tName,"Accept","No")
+    tName = '/User/' + ch + '/'
+    result = f.get(tName, '')
+    rs=f.put(tName,"request","n")
+    rs=f.put(tName,"Accept","No")
+    return HttpResponseRedirect("/employer/loggedin/")
 
 def getMoney(request):
     c = {}
@@ -259,7 +291,7 @@ def withdrawSuccess(request):
         Money = e.Money -int(request.session['amount'])
         e.Money = Money
         e.save()
-        return render_to_response('employer/success.html')
+        return render_to_response('employer/success.html',{"succ":"withdraw money successfully"})
     else:
         return render_to_response('employer/failure.html')
 
@@ -298,7 +330,7 @@ def depositSuccess(request):
         Money = e.Money +int(request.session['amount'])
         e.Money = Money
         e.save()
-        return render_to_response('employer/success.html')
+        return render_to_response('employer/success.html',{"succ":"deposit money successfully"})
     else:
         return render_to_response('employer/failure.html')
 
@@ -341,6 +373,6 @@ def varified(request):
         Money=e.Money-p.price
         e.Money=Money
         e.save()
-        return render_to_response('employer/success.html')
+        return render_to_response('employer/success.html',{"succ":"payment done successfully"})
     else:
         return render_to_response('employer/failure.html')

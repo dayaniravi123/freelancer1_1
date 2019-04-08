@@ -157,8 +157,10 @@
   						{%if p.status == "complete"%}
 							<a href="/employer/satisfy/" id="sa" class="btn btn-primary">Satisfy</a>
 							<a href="/employer/downloadProject/{{p.projectName}}/" class="btn btn-primary">download project</a>
-							<a href="/employer/payment/{{p.id}}/" class="btn btn-primary">Pay to Freelancer</a>
 
+						{%endif%}
+						{%if p.status == "payment"%}
+							<a href="/employer/payment/{{p.id}}/" class="btn btn-primary">Pay to Freelancer</a>
 						{%endif%}
 					</div>
 				</div>

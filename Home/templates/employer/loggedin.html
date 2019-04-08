@@ -158,7 +158,7 @@
     					<p  style="margin-bottom:10px;"><span style="font-weight:bold;"> Project Status:</span> {{p.status}}</p>
 						<a href="/project/showBid/{{p.id}}" class="btn btn-primary">Show Bids</a>
 						{%if p.status == "complete"%}
-							<a href="/employer/satisfy/" id="sa" class="btn btn-primary">Satisfy</a>
+							<a href="/employer/satisfy/{{p.id}}/" id="sa" class="btn btn-primary">Satisfy</a>
 							<a href="/employer/downloadProject/{{p.projectName}}/" class="btn btn-primary">download project</a>
 							<a href="/employer/payment/{{p.id}}/" style="display:none;" id="pf" class="btn btn-primary">Pay to Freelancer</a>
 
